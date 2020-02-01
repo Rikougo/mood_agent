@@ -1,8 +1,9 @@
 extends Node
 
 export (PackedScene) var Mob
+export (NodePath) var playerPath
 
-signal checkColor
+onready var player = get_node(playerPath)
 
 func _on_NewWave_timeout():
 	$WavePath/WaveSpawn.set_offset(randi())
@@ -17,8 +18,4 @@ func _on_NewWave_timeout():
 	mob.linear_velocity = mob.linear_velocity.rotated(direction)
 
 func checkColor(arg):
-	emit_signal("checkColor", arg)
-
-
-func _on_Mob_Pool_checkColor():
-	pass # Replace with function body.
+	player.playerCheckColor(arg)

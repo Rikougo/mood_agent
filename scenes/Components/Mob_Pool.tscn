@@ -8,7 +8,7 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 0.118275, 0.189159, 0, 0, 0, 0, 1024, 0.0129895, 0, 0, 0, 0, 1023.97, 600.014, 0, 0, 0, 0, -0.0419407, 600.04, 0, 0, 0, 0, 0.118275, 0.189159 )
 }
 
-[node name="Mob_Pool" type="Node"]
+[node name="Mob_Pool" type="Node2D"]
 script = ExtResource( 1 )
 Mob = ExtResource( 2 )
 
@@ -21,5 +21,4 @@ curve = SubResource( 1 )
 [node name="WaveSpawn" type="PathFollow2D" parent="WavePath"]
 position = Vector2( 0.118275, 0.189159 )
 rotation = -0.000172073
-[connection signal="checkColor" from="." to="." method="_on_Mob_Pool_checkColor"]
 [connection signal="timeout" from="NewWave" to="." method="_on_NewWave_timeout"]

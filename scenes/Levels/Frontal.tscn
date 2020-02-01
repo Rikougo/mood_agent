@@ -1,2 +1,18 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
 
+[ext_resource path="res://scenes/Components/Mob_Pool.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Components/Player.tscn" type="PackedScene" id=2]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 245.502, 228.167 )
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+current = true
+zoom = Vector2( 3, 3 )
+
+[node name="Mob_Pool" parent="Player/Camera2D" instance=ExtResource( 1 )]
+position = Vector2( -1536.78, -895.57 )
+scale = Vector2( 3, 3 )
+playerPath = NodePath("../Player")

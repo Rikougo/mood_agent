@@ -1,31 +1,23 @@
 #extends Area2D
 extends RigidBody2D
 
+const Colors = preload("res://scripts/Global/Colors.gd")
+
 signal touch
 
 export var min_speed = 150  # Minimum speed range.
 export var max_speed = 250  # Maximum speed range.
-var colorPossibility = ["purple", "green", "blue", "pink"] 
-var color = colorPossibility[randi() % colorPossibility.size()]
+const COLORS = [Color(0, 0, 0),
+				Color(0.85, 0.44, 0.83),
+				Color(0, 1, 0),
+				Color(0, 0, 1),
+				Color(1, 0, 0.45)]
+var color = int(rand_range(1.0, 5.0))
 
 func _ready():
-	if (color == "purple"):
-		modulate = Color(0.85,0.44,0.83)
-		get_node("Light2D").set_color(Color(0.85,0.44,0.83))
-	elif (color == "green"):
-		modulate = Color(0,1,0)
-		get_node("Light2D").set_color(Color(0,1,0))
-	elif (color == "blue"):
-		modulate = Color(0,0,1)
-		get_node("Light2D").set_color(Color(0,0,1))
-	else:
-		modulate = Color(1,0,0.45)
-		get_node("Light2D").set_color(Color(1,0,0.45))
+	modulate = COLORS[color]
+	get_node("Light2D").set_color(COLORS[color])
 
-func _on_VisibilityNotifier2D_screen_exited():
-	queue_free()
-
-func _on_Wave_body_entered(body):
+# warning-ignore:unused_argument
+func _on_Mob_body_entered(_body):
 	emit_signal("touch")
-
-
