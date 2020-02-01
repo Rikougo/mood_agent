@@ -8,9 +8,9 @@ func _ready():
 	pass
 
 func _physics_process(delta):
-    velocity = get_linear_velocity()
-    
-    velocity = velocity.linear_interpolate(Vector2.ZERO, 0.05)
-    set_axis_velocity(velocity)
+	velocity = get_linear_velocity()
+	
+	velocity = velocity.linear_interpolate(Vector2.ZERO, 0.05)
+	set_axis_velocity(velocity)
 
 

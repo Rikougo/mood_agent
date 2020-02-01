@@ -1,36 +1,58 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
-[ext_resource path="res://assets/sprites/player/idle/idle_to_swim0003.png" type="Texture" id=1]
-[ext_resource path="res://assets/sprites/player/idle/idle_to_swim0012.png" type="Texture" id=2]
-[ext_resource path="res://assets/sprites/player/idle/idle_to_swim0002.png" type="Texture" id=3]
-[ext_resource path="res://assets/sprites/player/idle/idle_to_swim0010.png" type="Texture" id=4]
-[ext_resource path="res://assets/sprites/player/idle/idle_to_swim0011.png" type="Texture" id=5]
-[ext_resource path="res://assets/sprites/player/idle/idle_to_swim0006.png" type="Texture" id=6]
-[ext_resource path="res://assets/sprites/player/idle/idle_to_swim0001.png" type="Texture" id=7]
-[ext_resource path="res://assets/sprites/player/idle/idle_to_swim0004.png" type="Texture" id=8]
-[ext_resource path="res://assets/sprites/player/idle/idle_to_swim0000.png" type="Texture" id=9]
-[ext_resource path="res://assets/sprites/player/idle/idle_to_swim0008.png" type="Texture" id=10]
-[ext_resource path="res://assets/sprites/player/idle/idle_to_swim0009.png" type="Texture" id=11]
-[ext_resource path="res://assets/sprites/player/idle/idle_to_swim0007.png" type="Texture" id=12]
-[ext_resource path="res://assets/sprites/player/idle/idle_to_swim0005.png" type="Texture" id=13]
+[ext_resource path="res://assets/sprites/player/idle/idle0006.png" type="Texture" id=1]
+[ext_resource path="res://assets/sprites/player/idle/idle0010.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/player/idle/idle0012.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/player/idle/idle0004.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprites/player/idle/idle0007.png" type="Texture" id=5]
+[ext_resource path="res://assets/sprites/player/idle/idle0008.png" type="Texture" id=6]
+[ext_resource path="res://assets/sprites/player/idle/idle0002.png" type="Texture" id=7]
+[ext_resource path="res://assets/sprites/player/idle/idle0003.png" type="Texture" id=8]
+[ext_resource path="res://assets/sprites/player/idle/idle0005.png" type="Texture" id=9]
+[ext_resource path="res://assets/sprites/player/idle/idle0009.png" type="Texture" id=10]
+[ext_resource path="res://assets/sprites/player/idle/idle0011.png" type="Texture" id=11]
+[ext_resource path="res://assets/sprites/player/idle/idle0000.png" type="Texture" id=12]
+[ext_resource path="res://assets/sprites/player/idle/idle0001.png" type="Texture" id=13]
 
-[sub_resource type="CapsuleShape2D" id=2]
-radius = 155.227
+[sub_resource type="ParticlesMaterial" id=4]
+emission_shape = 1
+emission_sphere_radius = 128.0
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 20.0
+scale_random = 1.0
+color = Color( 0.905882, 0.458824, 0.458824, 1 )
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ ExtResource( 9 ), ExtResource( 7 ), ExtResource( 3 ), ExtResource( 1 ), ExtResource( 8 ), ExtResource( 13 ), ExtResource( 6 ), ExtResource( 12 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 2 ) ],
+"frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 4 ), ExtResource( 9 ), ExtResource( 1 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 10 ), ExtResource( 2 ), ExtResource( 11 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "default",
 "speed": 12.0
 } ]
 
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 155.227
+height = 44.9634
+
 [node name="KinematicBody2D" type="KinematicBody2D"]
+
+[node name="Particles" type="Particles2D" parent="."]
+amount = 50
+lifetime = 2.0
+speed_scale = 2.0
+process_material = SubResource( 4 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -12.3033 )
+frames = SubResource( 3 )
+frame = 10
+playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 3 )
-frame = 11
-playing = true

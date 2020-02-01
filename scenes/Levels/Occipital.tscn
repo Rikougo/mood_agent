@@ -1,3 +1,17 @@
-[gd_scene format=2]
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/Components/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scripts/Samuel/player.gd" type="Script" id=3]
+[ext_resource path="res://scripts/Samuel/level.gd" type="Script" id=4]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource( 4 )
+levelType = 1
+
+[node name="KinematicBody2D" parent="." instance=ExtResource( 2 )]
+position = Vector2( 21.4205, -248.617 )
+script = ExtResource( 3 )
+
+[node name="Camera2D" type="Camera2D" parent="KinematicBody2D"]
+current = true
+zoom = Vector2( 3, 3 )
