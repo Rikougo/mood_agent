@@ -1,17 +1,17 @@
 [gd_scene load_steps=11 format=2]
 
+[ext_resource path="res://assets/sprites/hub.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Components/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/sprites/hub.png" type="Texture" id=3]
-[ext_resource path="res://scripts/Samuel/player_hub.gd" type="Script" id=4]
-[ext_resource path="res://assets/Font/Handrawn.tres" type="DynamicFont" id=5]
-[ext_resource path="res://assets/sprites/xbox_x_Button0.png" type="Texture" id=6]
-[ext_resource path="res://assets/sprites/xbox_x_Button3.png" type="Texture" id=7]
-[ext_resource path="res://assets/sprites/xbox_x_Button6.png" type="Texture" id=8]
-[ext_resource path="res://assets/sprites/xbox_x_Button9.png" type="Texture" id=9]
+[ext_resource path="res://scripts/Samuel/player_hub.gd" type="Script" id=3]
+[ext_resource path="res://assets/sprites/xbox_x_Button0.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprites/xbox_x_Button3.png" type="Texture" id=5]
+[ext_resource path="res://assets/sprites/xbox_x_Button6.png" type="Texture" id=6]
+[ext_resource path="res://assets/sprites/xbox_x_Button9.png" type="Texture" id=7]
+[ext_resource path="res://assets/Font/Handrawn.tres" type="DynamicFont" id=8]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
 "loop": true,
 "name": "default",
 "speed": 7.0
@@ -37,11 +37,11 @@ polygon = PoolVector2Array( -2821.65, -4647.56, -8124.9, -1636.17, -8764.49, 204
 
 [node name="hub" type="Sprite" parent="."]
 position = Vector2( 442.267, 228.722 )
-texture = ExtResource( 3 )
+texture = ExtResource( 1 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 472.015, 282.01 )
-script = ExtResource( 4 )
+script = ExtResource( 3 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2( 32.314, 16.9846 )
@@ -56,6 +56,7 @@ position = Vector2( -472.015, -282.01 )
 position = Vector2( 257.956, 64.484 )
 scale = Vector2( 0.230348, 0.230348 )
 frames = SubResource( 1 )
+frame = 3
 playing = true
 
 [node name="Label" type="Label" parent="Player/Top_Pop_Up"]
@@ -63,7 +64,7 @@ margin_left = 315.015
 margin_top = 33.7379
 margin_right = 724.015
 margin_bottom = 92.7379
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Test"
 __meta__ = {
