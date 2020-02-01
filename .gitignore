@@ -2,5 +2,7 @@
 export.cfg
 export_presets.cfg
 
+**/*.import
+
 .mono/
 data_*/

@@ -1,12 +1,34 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://scripts/Samuel/hub.gd" type="Script" id=1]
-[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/hub.png" type="Texture" id=3]
+[ext_resource path="res://scenes/Components/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/sprites/hub.png" type="Texture" id=3]
 [ext_resource path="res://scripts/Samuel/player_hub.gd" type="Script" id=4]
+[ext_resource path="res://assets/Font/Handrawn.tres" type="DynamicFont" id=5]
+[ext_resource path="res://assets/sprites/xbox_x_Button0.png" type="Texture" id=6]
+[ext_resource path="res://assets/sprites/xbox_x_Button3.png" type="Texture" id=7]
+[ext_resource path="res://assets/sprites/xbox_x_Button6.png" type="Texture" id=8]
+[ext_resource path="res://assets/sprites/xbox_x_Button9.png" type="Texture" id=9]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "default",
+"speed": 7.0
+} ]
+
+[sub_resource type="ParticlesMaterial" id=2]
+emission_shape = 1
+emission_sphere_radius = 128.0
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 20.0
+scale_random = 1.0
+color = Color( 0.905882, 0.458824, 0.458824, 1 )
 
 [node name="Root" type="Node2D"]
-script = ExtResource( 1 )
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 position = Vector2( 986.033, -799.485 )
@@ -24,11 +46,75 @@ script = ExtResource( 4 )
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2( 32.314, 16.9846 )
 current = true
-zoom = Vector2( 2.5, 2.5 )
+zoom = Vector2( 3, 3 )
+
+[node name="Top_Pop_Up" type="Node2D" parent="Player"]
+visible = false
+position = Vector2( -472.015, -282.01 )
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="Player/Top_Pop_Up"]
+position = Vector2( 257.956, 64.484 )
+scale = Vector2( 0.230348, 0.230348 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="Label" type="Label" parent="Player/Top_Pop_Up"]
+margin_left = 315.015
+margin_top = 33.7379
+margin_right = 724.015
+margin_bottom = 92.7379
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Test"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Particles" type="Particles2D" parent="Player"]
+amount = 50
+lifetime = 2.0
+speed_scale = 2.0
+process_material = SubResource( 2 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PoolVector2Array( -1325.56, 57.9009, -1371.93, 181.536, -1443.02, 425.714, -1554.29, 954.253, -1548.11, 1291.16, -1409.02, 1510.61, -1334.84, 1597.15, -1273.02, 1791.88, -1211.2, 1893.88, -1093.75, 1930.97, -929.932, 1955.69, -769.207, 1958.78, -630.118, 1943.33, -531.21, 1906.24, -447.757, 1875.33, -416.848, 1872.24, -351.94, 1934.06, -70.6709, 2036.06, 25.146, 2036.06, 114.781, 2036.06, 185.871, 2048.42, 294.052, 2073.15, 414.595, 2113.33, 522.776, 2138.05, 627.865, 2172.05, 717.5, 2190.6, 834.953, 2209.14, 924.589, 2230.78, 1023.5, 2236.96, 1178.04, 2249.33, 1341.86, 2236.96, 1527.31, 2224.6, 1700.4, 2178.24, 1892.03, 2104.06, 2006.39, 2079.33, 2136.21, 2011.33, 2269.12, 1930.97, 2343.3, 1847.51, 2405.11, 1798.06, 2476.2, 1723.88, 2534.93, 1649.7, 2553.48, 1566.24, 2565.84, 1482.79, 2562.75, 1402.43, 2612.2, 1393.16, 2670.93, 1284.98, 2692.56, 1179.89, 2701.84, 944.98, 2689.47, 753.346, 2677.11, 638.984, 2649.29, 549.349, 2602.93, 444.259, 2541.11, 339.17, 2510.2, 252.625, 2531.84, 162.99, 2541.11, 39.3556, 2568.93, -87.37, 2593.66, -223.368, 2599.84, -365.548, 2575.11, -436.638, 2504.02, -513.91, 2432.93, -625.181, 2364.93, -680.817, 2306.21, -785.906, 2232.03, -906.45, 2167.12, -955.904, 2040.39, -1030.08, 1898.21, -1082.63, 1814.76, -1122.81, 1626.22, -1141.36, 1465.49, -1144.45, 1350.24, -1182.92, 1153.39, -1252.64, 1009.85, -1314.16, 909.378, -1365.42, 841.71, -1402.33, 757.637, -1414.64, 620.251, -1408.48, 556.684, -1387.98, 536.178, -1367.47, 486.965, -1363.37, 390.59, -1377.73, 249.102, -1383.88, 101.463, -1385.93, -3.11499, -1373.62, -95.3895, -1344.92, -202.018, -1314.16, -275.838, -1312.11, -359.91, -1287.5, -441.932, -1242.39, -515.751, -1182.92, -626.481, -1125.51, -798.726, -1043.49, -880.748, -988.122, -987.377, -936.858, -1061.2, -834.331, -1155.52, -676.439, -1221.14, -563.659, -1278.55, -454.98, -1299.06, -393.464, -1313.41, -338.099, -1321.62, -290.937, -1325.72, -239.673, -1329.82, -155.601, -1315.46, -44.8715, -1313.41, -12.0627, -1664.06, -557.508, -1375.62, -2541.73, 1231.6, -2587.21, 3960.08, -768.22, 3702.39, 1384.25, 2459.42, 2612.07, 34.0996, 2657.54, -1754.57, 2369.54, -2057.74, 868.87, -1484.53, 43.6801, -1363.69, 28.5749, -1343.55, 71.3729, -1329.02, 57.5075, -1313.93, -8.90667 )
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Gates" type="Node2D" parent="."]
+
+[node name="Temporal" type="Area2D" parent="Gates"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Gates/Temporal"]
+polygon = PoolVector2Array( -978.917, -937.537, -516.837, -1176.7, -416.66, -1017.86, -918.45, -792.235 )
+
+[node name="Frontal" type="Area2D" parent="Gates"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Gates/Frontal"]
+polygon = PoolVector2Array( 1563, -1137, 1828, -1113, 1985, -1042, 1909, -877, 1527, -965 )
+
+[node name="Parietal" type="Area2D" parent="Gates"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Gates/Parietal"]
+polygon = PoolVector2Array( -1320, 1620, -1170, 1559, -1081, 1674, -1012, 1777, -1092, 1921, -1223, 1862, -1285, 1740 )
+
+[node name="Occipital" type="Area2D" parent="Gates"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Gates/Occipital"]
+polygon = PoolVector2Array( 2214.74, 1961.25, 2372.68, 1818.65, 2506.25, 1682.38, 2368.16, 1540.68, 2123.59, 1763.6, 2109.15, 1870.1 )
+[connection signal="area_entered" from="Gates/Temporal" to="Player" method="_on_Temporal_area_entered"]
+[connection signal="area_exited" from="Gates/Temporal" to="Player" method="_on_Temporal_area_exited"]
+[connection signal="body_entered" from="Gates/Temporal" to="Player" method="_on_Temporal_body_entered"]
+[connection signal="body_exited" from="Gates/Temporal" to="Player" method="_on_Temporal_body_exited"]
+[connection signal="area_entered" from="Gates/Frontal" to="Player" method="_on_Frontal_area_entered"]
+[connection signal="area_exited" from="Gates/Frontal" to="Player" method="_on_Frontal_area_exited"]
+[connection signal="body_entered" from="Gates/Frontal" to="Player" method="_on_Frontal_body_entered"]
+[connection signal="body_exited" from="Gates/Frontal" to="Player" method="_on_Frontal_body_exited"]
+[connection signal="area_entered" from="Gates/Parietal" to="Player" method="_on_Parietal_area_entered"]
+[connection signal="area_exited" from="Gates/Parietal" to="Player" method="_on_Parietal_area_exited"]
+[connection signal="body_entered" from="Gates/Parietal" to="Player" method="_on_Parietal_body_entered"]
+[connection signal="body_exited" from="Gates/Parietal" to="Player" method="_on_Parietal_body_exited"]
+[connection signal="area_entered" from="Gates/Occipital" to="Player" method="_on_Occipital_area_entered"]
+[connection signal="area_exited" from="Gates/Occipital" to="Player" method="_on_Occipital_area_exited"]
+[connection signal="body_entered" from="Gates/Occipital" to="Player" method="_on_Occipital_body_entered"]
+[connection signal="body_exited" from="Gates/Occipital" to="Player" method="_on_Occipital_body_exited"]

@@ -1,0 +1,36 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://assets/sprites/player/idle/idle_to_swim0003.png" type="Texture" id=1]
+[ext_resource path="res://assets/sprites/player/idle/idle_to_swim0012.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/player/idle/idle_to_swim0002.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/player/idle/idle_to_swim0010.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprites/player/idle/idle_to_swim0011.png" type="Texture" id=5]
+[ext_resource path="res://assets/sprites/player/idle/idle_to_swim0006.png" type="Texture" id=6]
+[ext_resource path="res://assets/sprites/player/idle/idle_to_swim0001.png" type="Texture" id=7]
+[ext_resource path="res://assets/sprites/player/idle/idle_to_swim0004.png" type="Texture" id=8]
+[ext_resource path="res://assets/sprites/player/idle/idle_to_swim0000.png" type="Texture" id=9]
+[ext_resource path="res://assets/sprites/player/idle/idle_to_swim0008.png" type="Texture" id=10]
+[ext_resource path="res://assets/sprites/player/idle/idle_to_swim0009.png" type="Texture" id=11]
+[ext_resource path="res://assets/sprites/player/idle/idle_to_swim0007.png" type="Texture" id=12]
+[ext_resource path="res://assets/sprites/player/idle/idle_to_swim0005.png" type="Texture" id=13]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 155.227
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 9 ), ExtResource( 7 ), ExtResource( 3 ), ExtResource( 1 ), ExtResource( 8 ), ExtResource( 13 ), ExtResource( 6 ), ExtResource( 12 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 12.0
+} ]
+
+[node name="KinematicBody2D" type="KinematicBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 3 )
+frame = 11
+playing = true

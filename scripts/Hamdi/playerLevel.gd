@@ -38,8 +38,7 @@ func _physics_process(delta):
 		friction = true
 	
 	if jump :
-		if jump_count<2 :
-			
+		if jump_count<2:	
 			vel.y = JUMP
 			jump_count +=1
 	
