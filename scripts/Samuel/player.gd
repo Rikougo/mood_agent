@@ -4,6 +4,8 @@ const MAX_SPEED = 1000
 const ACCELERATION = 20
 var motion = Vector2.ZERO
 
+var transitionReversed = false
+
 	
 func _physics_process(delta):	
 	var axis = Vector2.ZERO
@@ -14,8 +16,14 @@ func _physics_process(delta):
 	
 	if axis.x != 0 || axis.y != 0:
 		motion = (motion + axis * ACCELERATION).clamped(MAX_SPEED)
+		if $Visage.get_animation() == "idle": 
+			$Visage.play("starting")
+			transitionReversed = false
 	else:
-		motion = motion.linear_interpolate(Vector2.ZERO, 0.1)
+		if $Visage.get_animation() == "swimming": 
+			$Visage.play("starting", true)
+			transitionReversed = true
+		motion = motion.linear_interpolate(Vector2.ZERO, 0.01)
 	
 	get_node("Particles").get_process_material().set_gravity(Vector3(motion.x * -1, motion.y * -1, 0)) 
 	move_and_slide(motion)
@@ -86,3 +94,7 @@ func _on_Occipital_body_exited(body):
 	if state == State.OCCIPITAL and body == self:
 		state = State.NORMAL
 
+func _on_Visage_animation_finished():
+	if $Visage.get_animation() == "starting" and not transitionReversed: $Visage.play("swimming")
+	elif $Visage.get_animation() == "starting" : $Visage.play("idle")
+	

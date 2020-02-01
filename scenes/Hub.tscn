@@ -3,7 +3,6 @@
 [ext_resource path="res://scripts/Samuel/level.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Components/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/sprites/hub.png" type="Texture" id=3]
-[ext_resource path="res://scripts/Samuel/player.gd" type="Script" id=4]
 [ext_resource path="res://assets/Font/Handrawn.tres" type="DynamicFont" id=5]
 [ext_resource path="res://assets/sprites/xbox_x_Button0.png" type="Texture" id=6]
 [ext_resource path="res://assets/sprites/xbox_x_Button3.png" type="Texture" id=7]
@@ -18,6 +17,9 @@ animations = [ {
 "speed": 7.0
 } ]
 
+[sub_resource type="OccluderPolygon2D" id=2]
+polygon = PoolVector2Array( -808.718, -4.19604, -441.782, -37.5537, -668.615, -170.985 )
+
 [node name="Root" type="Node2D"]
 script = ExtResource( 1 )
 
@@ -31,10 +33,13 @@ position = Vector2( 442.267, 228.722 )
 texture = ExtResource( 3 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-script = ExtResource( 4 )
+position = Vector2( 0, 1 )
 
 [node name="Top_Pop_Up" type="Node2D" parent="Player"]
 position = Vector2( -100, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="Player/Top_Pop_Up"]
 position = Vector2( -115.699, -224.37 )
@@ -56,9 +61,13 @@ __meta__ = {
 }
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2( 504.329, 298.995 )
+position = Vector2( 9.01016, -0.593414 )
+scale = Vector2( 0.352496, 1 )
 current = true
 zoom = Vector2( 3, 3 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -86,6 +95,12 @@ polygon = PoolVector2Array( -1320, 1620, -1170, 1559, -1081, 1674, -1012, 1777, 
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Gates/Occipital"]
 polygon = PoolVector2Array( 2214.74, 1961.25, 2372.68, 1818.65, 2506.25, 1682.38, 2368.16, 1540.68, 2123.59, 1763.6, 2109.15, 1870.1 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource( 2 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.376471, 0.376471, 0.376471, 1 )
 [connection signal="body_entered" from="Gates/Temporal" to="Player" method="_on_Temporal_body_entered"]
 [connection signal="body_exited" from="Gates/Temporal" to="Player" method="_on_Temporal_body_exited"]
 [connection signal="body_entered" from="Gates/Frontal" to="Player" method="_on_Frontal_body_entered"]
