@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scripts/Bastien/mob.gd" type="Script" id=1]
+[ext_resource path="res://assets/spot.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/enemies/ghostkifepeur.png" type="Texture" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 211.494
+height = 147.337
+
+[node name="RigidBody2D" type="RigidBody2D"]
+position = Vector2( 321.471, 288.858 )
+collision_layer = 0
+gravity_scale = 0.0
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Light2D" type="Light2D" parent="."]
+texture = ExtResource( 2 )
+texture_scale = 7.0

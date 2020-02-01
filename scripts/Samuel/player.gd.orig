@@ -3,15 +3,15 @@ extends KinematicBody2D
 const MAX_SPEED = 1000
 const ACCELERATION = 20
 var motion = Vector2.ZERO
-
-
-
-
-
+<<<<<<< HEAD
+##lvl 2##
+var can_change_letter = false
 signal change_it
+=======
+
 var transitionReversed = false
 
-
+>>>>>>> 8d3e73a6131a91c58d1a59824eec70a4ea478345
 	
 func _physics_process(delta):
 	var axis = Vector2.ZERO
