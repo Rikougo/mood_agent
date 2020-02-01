@@ -5,6 +5,8 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
+cameraDefault = Vector2( 2, 2 )
+cameraZoom = Vector2( 2.5, 2.5 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true

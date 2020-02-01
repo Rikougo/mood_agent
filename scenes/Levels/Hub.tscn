@@ -1,16 +1,57 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=25 format=2]
 
-[ext_resource path="res://assets/sprites/zones/hub/hub0001.png" type="Texture" id=1]
-[ext_resource path="res://assets/sprites/zones/hub/hub0002.png" type="Texture" id=2]
-[ext_resource path="res://assets/sprites/zones/hub/hub0003.png" type="Texture" id=3]
-[ext_resource path="res://assets/sprites/zones/hub/hub0005.png" type="Texture" id=4]
-[ext_resource path="res://assets/sprites/zones/hub/hub0000.png" type="Texture" id=5]
-[ext_resource path="res://assets/sprites/zones/hub/hub0004.png" type="Texture" id=6]
+[ext_resource path="res://assets/sprites/zones/hub/open0013.png" type="Texture" id=1]
+[ext_resource path="res://assets/sprites/zones/hub/open0019.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/zones/hub/open0014.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/zones/hub/open0022.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprites/zones/hub/open0016.png" type="Texture" id=5]
+[ext_resource path="res://assets/sprites/zones/hub/open0021.png" type="Texture" id=6]
 [ext_resource path="res://scenes/Components/Player.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/sprites/zones/hub/open0003.png" type="Texture" id=8]
+[ext_resource path="res://assets/sprites/zones/hub/open0004.png" type="Texture" id=9]
+[ext_resource path="res://assets/sprites/zones/hub/open0002.png" type="Texture" id=10]
+[ext_resource path="res://assets/sprites/zones/hub/open0001.png" type="Texture" id=11]
+[ext_resource path="res://assets/sprites/zones/hub/open0000.png" type="Texture" id=12]
+[ext_resource path="res://assets/sprites/zones/hub/open0005.png" type="Texture" id=13]
+[ext_resource path="res://assets/sprites/zones/hub/open0006.png" type="Texture" id=14]
+[ext_resource path="res://assets/sprites/zones/hub/open0007.png" type="Texture" id=15]
+[ext_resource path="res://assets/sprites/zones/hub/open0008.png" type="Texture" id=16]
+[ext_resource path="res://assets/sprites/zones/hub/open0009.png" type="Texture" id=17]
+[ext_resource path="res://assets/sprites/zones/hub/open0012.png" type="Texture" id=18]
+[ext_resource path="res://assets/sprites/zones/hub/open0010.png" type="Texture" id=19]
+[ext_resource path="res://assets/sprites/zones/hub/open0011.png" type="Texture" id=20]
+[ext_resource path="res://assets/sprites/zones/hub/open0015.png" type="Texture" id=21]
+[ext_resource path="res://assets/sprites/zones/hub/open0018.png" type="Texture" id=22]
+[ext_resource path="res://assets/sprites/zones/hub/open0020.png" type="Texture" id=23]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 5 ), ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 6 ), ExtResource( 4 ) ],
+"frames": [ ExtResource( 22 ), ExtResource( 2 ), ExtResource( 23 ), ExtResource( 6 ), ExtResource( 4 ) ],
+"loop": false,
+"name": "open_center",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ],
+"loop": false,
+"name": "open_temporal",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 3 ), ExtResource( 21 ), ExtResource( 5 ) ],
+"loop": false,
+"name": "open_parietal",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 17 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 18 ) ],
+"loop": false,
+"name": "open_frontal",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": false,
+"name": "open_occipital",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 12 ) ],
 "loop": true,
 "name": "hub",
 "speed": 5.0
@@ -19,18 +60,28 @@ animations = [ {
 [node name="Node2D" type="Node2D"]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color( 0.65098, 0.65098, 0.65098, 1 )
+color = Color( 0.337255, 0.337255, 0.337255, 1 )
+__meta__ = {
+"_editor_description_": ""
+}
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Structures" type="StaticBody2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="StaticBody2D"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Structures"]
 position = Vector2( 157.699, 292.854 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
-animation = "hub"
-frame = 5
+animation = "open_parietal"
+frame = 3
+playing = true
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Structures"]
 position = Vector2( 157.699, 292.854 )
 scale = Vector2( 2, 2 )
 polygon = PoolVector2Array( -42.0212, -516.668, 30.8759, -526.582, 98.5244, -521.334, 144.892, -510.525, 190.284, -502.843, 226.248, -499.701, 256.277, -500.399, 287.702, -501.098, 331.802, -498.777, 373.784, -489.259, 425.103, -475.263, 467.092, -456.018, 509.081, -435.023, 553.985, -421.027, 586.06, -405.864, 614.053, -384.287, 646.711, -354.545, 672.954, -318.971, 715.604, -261.645, 733.319, -235.42, 754.983, -213.674, 769.303, -190.046, 782.711, -158.17, 787.919, -128.471, 795.078, -86.9439, 812.978, -48.9965, 832.31, -16.0611, 831.594, 42.65, 822.286, 99.9291, 807.717, 132.829, 791.756, 167.82, 772.112, 215.702, 757.993, 264.812, 744.243, 308.282, 722.389, 345.229, 694.765, 377.15, 661.189, 396.348, 623.957, 410.668, 594.704, 429.943, 561.555, 437.309, 527.299, 443.603, 482.192, 461.503, 434.001, 467.998, 382.669, 468.663, 346.767, 471.229, 308.137, 471.259, 268.698, 468.258, 219.399, 467.4, 184.151, 468.89, 151.519, 469.416, 125.945, 466.114, 98.0798, 459.684, 55.211, 452.396, 11.4847, 442.108, -38.6718, 429.676, -86.6849, 415.958, -135.555, 400.525, -185.825, 387.756, -225.58, 373.089, -260.732, 362.372, -311.318, 350.368, -355.044, 331.077, -397.484, 306.213, -435.705, 276.062, -466.493, 240.263, -498.849, 205.416, -524.638, 165.942, -553.586, 139.1, -585.691, 124.363, -634.638, 106.995, -671.084, 86.6635, -696.743, 56.9215, -711.906, 23.0972, -714.239, -17.142, -710.156, -59.7139, -689.162, -101.119, -661.957, -124.891, -609.69, -161.407, -566.731, -209.378, -518.044, -260.929, -463.629, -309.616, -414.941, -360.451, -355.515, -409.854, -292.508, -454.962, -233.081, -483.601, -170.074, -503.649, -104.203, -513.673, -43.1876, -516.668, -44.0889, -604.394, -387.018, -637.539, -817.589, -395.225, -909.146, -117.632, -907.198, 83.0143, -379.283, 671.107, 464.211, 634.095, 1143.1, 177.283, 760.311, -601.926, 146.683, -652.074, -38.6725, -604.394 )
@@ -40,34 +91,57 @@ __meta__ = {
 
 [node name="Player" parent="." instance=ExtResource( 7 )]
 position = Vector2( -11.5103, 224.562 )
+cameraDefault = Vector2( 2, 2 )
+cameraZoom = Vector2( 1.5, 1.5 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true
 zoom = Vector2( 2, 2 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Node2D" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Occipital" type="Area2D" parent="Node2D"]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/Occipital"]
 polygon = PoolVector2Array( -521.519, -336.327, -326.306, -459.962, -156.198, -495.774, -59.6113, -446.8, -69.134, -291.717, -101.783, -214.175, -206.532, -180.166, -371.855, -219.199 )
 
 [node name="Frontal" type="Area2D" parent="Node2D"]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/Frontal"]
 polygon = PoolVector2Array( 861.838, -39.5686, 913.655, -169.112, 1046.9, -343.071, 1117.22, -378.232, 1182, -368.979, 1239.36, -287.552, 1287.48, -215.378, 1346.7, -182.066, 1302.29, -139.502, 1293.03, -76.5811, 1246.77, -65.4773, 1182, -111.743, 1148.68, -141.353, 1093.17, -145.054, 1061.71, -106.191, 1041.35, -61.7761, 1024.69, -102.49, 993.232, -106.191, 932.162, -76.5811 )
 
 [node name="Parietal" type="Area2D" parent="Node2D"]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/Parietal"]
 polygon = PoolVector2Array( 824.156, 748.053, 867.581, 759.745, 959.442, 753.064, 1061.32, 766.425, 1131.47, 749.724, 1181.58, 796.489, 1173.23, 843.254, 1089.72, 911.732, 979.484, 928.434, 885.953, 921.753, 789.083, 933.444 )
 
 [node name="Temporal" type="Area2D" parent="Node2D"]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/Temporal"]
 polygon = PoolVector2Array( -325.232, 570.075, -298.509, 615.17, -258.424, 663.605, -260.094, 722.061, -293.498, 738.763, -377.007, 718.721, -450.496, 725.402, -510.622, 673.626, -537.345, 595.127, -545.696, 523.309, -549.037, 463.183, -502.271, 423.098, -453.836, 394.705, -410.411, 419.758, -368.656, 484.895 )
 
 [node name="Center" type="Area2D" parent="Node2D"]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/Center"]
 position = Vector2( 0, -14.6816 )
