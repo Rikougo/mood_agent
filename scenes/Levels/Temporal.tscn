@@ -1,3 +1,47 @@
-[gd_scene format=2]
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scripts/Samuel/level.gd" type="Script" id=1]
+[ext_resource path="res://scripts/Judicael/lvl2.gd" type="Script" id=2]
+[ext_resource path="res://scenes/Components/Lettre.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scripts/Judicael/Lettre.gd" type="Script" id=4]
+[ext_resource path="res://scenes/Components/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scripts/Samuel/player.gd" type="Script" id=6]
+[ext_resource path="res://scenes/Components/Cell.tscn" type="PackedScene" id=7]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource( 1 )
+levelType = 1
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="lettre1" parent="." instance=ExtResource( 3 )]
+position = Vector2( 855.477, 137.586 )
+script = ExtResource( 4 )
+
+[node name="lettre2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1152.28, 389.339 )
+script = ExtResource( 4 )
+
+[node name="lettre3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 455.321, -111.518 )
+script = ExtResource( 4 )
+
+[node name="KinematicBody2D" parent="." instance=ExtResource( 5 )]
+position = Vector2( 187.06, 434.247 )
+script = ExtResource( 6 )
+
+[node name="Camera2D" type="Camera2D" parent="KinematicBody2D"]
+position = Vector2( 4, 0 )
+current = true
+zoom = Vector2( 3, 3 )
+
+[node name="Cell" parent="." instance=ExtResource( 7 )]
+position = Vector2( 645.127, 138.963 )
+[connection signal="body_entered" from="lettre1" to="KinematicBody2D" method="_on_lettre_body_entered"]
+[connection signal="body_exited" from="lettre1" to="KinematicBody2D" method="_on_lettre_body_exited"]
+[connection signal="body_entered" from="lettre2" to="KinematicBody2D" method="_on_lettre_body_entered"]
+[connection signal="body_exited" from="lettre2" to="KinematicBody2D" method="_on_lettre_body_exited"]
+[connection signal="body_entered" from="lettre3" to="KinematicBody2D" method="_on_lettre_body_entered"]
+[connection signal="body_exited" from="lettre3" to="KinematicBody2D" method="_on_lettre_body_exited"]
+[connection signal="change_it" from="KinematicBody2D" to="lettre1" method="_on_KinematicBody2D_change_it"]

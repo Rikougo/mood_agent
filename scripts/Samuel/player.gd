@@ -3,9 +3,11 @@ extends KinematicBody2D
 const MAX_SPEED = 1000
 const ACCELERATION = 20
 var motion = Vector2.ZERO
-
+##lvl 2##
+var can_change_letter = false
+signal change_it
 	
-func _physics_process(delta):	
+func _physics_process(delta):
 	var axis = Vector2.ZERO
 	axis.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	axis.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
@@ -15,22 +17,23 @@ func _physics_process(delta):
 	if axis.x != 0 || axis.y != 0:
 		motion = (motion + axis * ACCELERATION).clamped(MAX_SPEED)
 	else:
-		motion = motion.linear_interpolate(Vector2.ZERO, 0.1)
+		motion = motion.linear_interpolate(Vector2.ZERO, 0.05)
 	
 	get_node("Particles").get_process_material().set_gravity(Vector3(motion.x * -1, motion.y * -1, 0)) 
 	move_and_slide(motion)
 	
 func _input(event):
-	if get_parent().levelType == get_parent().LevelType.HUB:
-		if event.is_action_pressed("ui_accept"):
-			if state == State.TEMPORAL:
-				get_tree().change_scene("res://scenes/Levels/Temporal.tscn")
-			if state == State.FRONTAL:
-				get_tree().change_scene("res://scenes/Levels/Frontal.tscn")
-			if state == State.OCCIPITAL:
-				get_tree().change_scene("res://scenes/Levels/Occipital.tscn")
-			if state == State.PARIETAL:
-				get_tree().change_scene("res://scenes/Levels/Parietal.tscn")
+	if event.is_action_pressed("ui_accept"):
+		if state == State.TEMPORAL:
+			get_tree().change_scene("res://scenes/Levels/Temporal.tscn")
+		if state == State.FRONTAL:
+			get_tree().change_scene("res://scenes/Levels/Frontal.tscn")
+		if state == State.OCCIPITAL:
+			get_tree().change_scene("res://scenes/Levels/Occipital.tscn")
+		if state == State.PARIETAL:
+			get_tree().change_scene("res://scenes/Levels/Parietal.tscn")
+		if state == State.LETTER:
+			emit_signal("change_it")
 # --- ON TOP PLAYER'S POP UP --- #
 
 enum State{
@@ -38,20 +41,24 @@ enum State{
 	TEMPORAL,
 	FRONTAL,
 	PARIETAL,
-	OCCIPITAL
+	OCCIPITAL,
+	LETTER
 }
 
-const ZONES = ["Temporal", "Frontal", "Pariétal", "Occipital"]
+const QUOTES = ["Temporal (Entrer)", 
+			   "Frontal (Entrer)", 
+			   "Pariétal (Entrer)", 
+			   "Occipital (Entrer)", 
+			   "Changer lettre"]
 
 var state = State.NORMAL
 
 func _process(delta):
-	if get_parent().levelType == get_parent().LevelType.HUB:
-		if state == State.NORMAL:
-			get_node("Top_Pop_Up").set_visible(false)
-		else:
-			get_node("Top_Pop_Up").set_visible(true)
-			get_node("Top_Pop_Up/Label").set_text(ZONES[state-1] + " (entrer)")
+	if state == State.NORMAL:
+		get_node("Top_pop_up").set_visible(false)
+	else:
+		get_node("Top_pop_up").set_visible(true)
+		get_node("Top_pop_up/Label").set_text(QUOTES[state-1])
 		
 func _on_Temporal_body_entered(body):
 	print("t")
@@ -86,3 +93,11 @@ func _on_Occipital_body_exited(body):
 	if state == State.OCCIPITAL and body == self:
 		state = State.NORMAL
 
+#-- LETTER INTERACTION --#
+func _on_lettre_body_entered(body):
+	if state == State.NORMAL:
+		state = State.LETTER
+
+func _on_lettre_body_exited(body):
+	if state == State.LETTER:
+		state = State.NORMAL

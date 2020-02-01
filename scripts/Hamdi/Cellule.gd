@@ -5,7 +5,6 @@ var velocity = Vector2()
 
 func _ready():
 	set_bounce(0.8)
-	pass
 
 func _physics_process(delta):
 	velocity = get_linear_velocity()
