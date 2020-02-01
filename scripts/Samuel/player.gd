@@ -4,15 +4,9 @@ const MAX_SPEED = 1000
 const ACCELERATION = 20
 var motion = Vector2.ZERO
 
-
-
-
-
 signal change_it
 var transitionReversed = false
 
-
-	
 func _physics_process(delta):
 	var axis = Vector2.ZERO
 	axis.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
@@ -26,14 +20,11 @@ func _physics_process(delta):
 			$Visage.play("starting")
 			transitionReversed = false
 	else:
-<<<<<<< HEAD
 		motion = motion.linear_interpolate(Vector2.ZERO, 0.05)
-=======
 		if $Visage.get_animation() == "swimming": 
 			$Visage.play("starting", true)
 			transitionReversed = true
 		motion = motion.linear_interpolate(Vector2.ZERO, 0.01)
->>>>>>> 8d3e73a6131a91c58d1a59824eec70a4ea478345
 	
 	get_node("Particles").get_process_material().set_gravity(Vector3(motion.x * -1, motion.y * -1, 0)) 
 	move_and_slide(motion)
@@ -109,7 +100,6 @@ func _on_Occipital_body_exited(body):
 	if state == State.OCCIPITAL and body == self:
 		state = State.NORMAL
 
-<<<<<<< HEAD
 #-- LETTER INTERACTION --#
 func _on_lettre_body_entered(body):
 	if state == State.NORMAL:
@@ -118,9 +108,7 @@ func _on_lettre_body_entered(body):
 func _on_lettre_body_exited(body):
 	if state == State.LETTER:
 		state = State.NORMAL
-=======
+		
 func _on_Visage_animation_finished():
 	if $Visage.get_animation() == "starting" and not transitionReversed: $Visage.play("swimming")
 	elif $Visage.get_animation() == "starting" : $Visage.play("idle")
-	
->>>>>>> 8d3e73a6131a91c58d1a59824eec70a4ea478345
