@@ -14,7 +14,7 @@ func _on_NewWave_timeout():
 	mob.position = $WavePath/WaveSpawn.position
 	direction += rand_range(-PI / 4, PI / 4)
 	mob.rotation = direction
-	mob.linear_velocity = Vector2(rand_range(mob.min_speed, mob.max_speed), 0)
+	mob.linear_velocity = mob.position.move_toward(player.position, 10)
 	mob.linear_velocity = mob.linear_velocity.rotated(direction)
 
 func checkColor(arg):

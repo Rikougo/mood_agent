@@ -1,6 +1,5 @@
 extends RigidBody2D
 
-export var type = "cellule"
 var velocity = Vector2()
 
 func _ready():
@@ -11,5 +10,3 @@ func _physics_process(delta):
 	
 	velocity = velocity.linear_interpolate(Vector2.ZERO, 0.05)
 	set_axis_velocity(velocity)
-
-

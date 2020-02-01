@@ -1,8 +1,33 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://scripts/Bastien/mob.gd" type="Script" id=1]
 [ext_resource path="res://assets/spot.png" type="Texture" id=2]
 [ext_resource path="res://assets/sprites/enemies/ghostkifepeur.png" type="Texture" id=3]
+
+[sub_resource type="GDScript" id=2]
+script/source = "#extends Area2D
+extends RigidBody2D
+
+const Colors = preload(\"res://scripts/Global/Colors.gd\")
+
+signal touch
+
+export var min_speed = 150  # Minimum speed range.
+export var max_speed = 250  # Maximum speed range.
+const COLORS = [Color(0, 0, 0),
+				Color(0.85, 0.44, 0.83),
+				Color(0, 1, 0),
+				Color(0, 0, 1),
+				Color(1, 0, 0.45)]
+var color = int(rand_range(1.0, 5.0))
+
+func _ready():
+	modulate = Colors.POOL[color]
+	get_node(\"Light2D\").set_color(Colors.POOL[color])
+
+# warning-ignore:unused_argument
+func _on_Mob_body_entered(_body):
+	emit_signal(\"touch\")
+"
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 211.494
@@ -14,7 +39,7 @@ collision_layer = 0
 gravity_scale = 0.0
 contacts_reported = 1
 contact_monitor = true
-script = ExtResource( 1 )
+script = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 3 )

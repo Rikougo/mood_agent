@@ -8,7 +8,8 @@ enum State{
 	FRONTAL,
 	PARIETAL,
 	OCCIPITAL,
-	LETTER
+	LETTER,
+	INCAPACITATE
 }
 
 const MAX_SPEED = 1000
@@ -19,13 +20,8 @@ const QUOTES = ["Temporal (Entrer)",
 			   "Frontal (Entrer)", 
 			   "Pariétal (Entrer)", 
 			   "Occipital (Entrer)", 
-			   "Changer lettre"]
-			
-const COLORS = [Color(0, 0, 0, 0.2),
-				Color(0.85, 0.44, 0.83),
-				Color(0, 1, 0),
-				Color(0, 0, 1),
-				Color(1, 0, 0.45)]
+			   "Changer lettre",
+			   "Non disponible"]
 
 var state = State.NORMAL
 var color = Colors.DEFAULT
@@ -53,7 +49,7 @@ func _physics_process(delta):
 			transitionReversed = true
 		motion = motion.linear_interpolate(Vector2.ZERO, 0.01)
 	
-	get_node("Particles").get_process_material().set_gravity(Vector3(motion.x * -1, motion.y * -1, 0)) 
+	$Particles.get_process_material().set_gravity(Vector3(motion.x * -1, motion.y * -1, 0)) 
 	move_and_slide(motion)
 
 func _input(event):
@@ -68,6 +64,7 @@ func _input(event):
 			get_tree().change_scene("res://scenes/Levels/Parietal.tscn")
 		if state == State.LETTER:
 			emit_signal("change_it")
+			
 	if event.is_action_pressed("Color_DEFAULT"):
 		color = Colors.DEFAULT
 	if event.is_action_pressed("Color_PURPLE"):
@@ -82,17 +79,20 @@ func _input(event):
 # --- ON TOP PLAYER'S POP UP --- #
 
 func _process(delta):
-	get_node("Visage").modulate = COLORS[color]
+	var modulateColor = Colors.POOL[color]
+	
+	$Visage.modulate = modulateColor
+	$Particles.modulate = modulateColor
 	
 	if state == State.NORMAL:
-		get_node("Top_pop_up").set_visible(false)
+		$Top_pop_up.set_visible(false)
 	else:
-		get_node("Top_pop_up").set_visible(true)
-		get_node("Top_pop_up/Label").set_text(QUOTES[state-1])
+		$Top_pop_up.set_visible(true)
+		$Top_pop_up/Label.set_text(QUOTES[state-1])
+		$Top_pop_up/Sprite.set_visible(state == State.INCAPACITATE)
 		
 func _on_Temporal_body_entered(body):
-	print("t")
-	if state == State.NORMAL and body == self:
+	if body == self:
 		state = State.TEMPORAL
 
 func _on_Temporal_body_exited(body):
@@ -100,7 +100,7 @@ func _on_Temporal_body_exited(body):
 		state = State.NORMAL
 
 func _on_Frontal_body_entered(body):
-	if state == State.NORMAL and body == self:
+	if body == self:
 		state = State.FRONTAL
 
 func _on_Frontal_body_exited(body):
@@ -108,7 +108,7 @@ func _on_Frontal_body_exited(body):
 		state = State.NORMAL
 
 func _on_Parietal_body_entered(body):
-	if state == State.NORMAL and body == self:
+	if body == self:
 		state = State.PARIETAL
 
 func _on_Parietal_body_exited(body):
@@ -116,25 +116,24 @@ func _on_Parietal_body_exited(body):
 		state = State.NORMAL
 
 func _on_Occipital_body_entered(body):
-	if state == State.NORMAL and body == self:
+	if body == self:
 		state = State.OCCIPITAL
 
 func _on_Occipital_body_exited(body):
 	if state == State.OCCIPITAL and body == self:
 		state = State.NORMAL
 
-#-- LETTER INTERACTION --#
-func _on_lettre_body_entered(body):
-	if state == State.NORMAL:
-		state = State.LETTER
-
-func _on_lettre_body_exited(body):
-	if state == State.LETTER:
+func _on_Center_body_entered(body):
+	if body == self:
+		state = State.INCAPACITATE
+	
+func _on_Center_body_exited(body):
+	if state == State.INCAPACITATE:
 		state = State.NORMAL
-		
-func _on_Visage_animation_finished():
-	if $Visage.get_animation() == "starting" and not transitionReversed: $Visage.play("swimming")
-	elif $Visage.get_animation() == "starting" : $Visage.play("idle")
+
+#-- LETTER INTERACTION --#
+
+# TODO
 
 # -- MOB INTERACTIONS -- #
 
@@ -143,3 +142,11 @@ func playerCheckColor(foe):
 		foe.queue_free()
 	else:
 		print("t mor")
+		
+func _on_Visage_animation_finished():
+	if $Visage.get_animation() == "starting" and not transitionReversed: $Visage.play("swimming")
+	elif $Visage.get_animation() == "starting" : $Visage.play("idle")
+
+
+
+
