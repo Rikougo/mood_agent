@@ -7,8 +7,8 @@
 extents = Vector2( 85.4685, 91.1723 )
 
 [node name="CBlock" type="RigidBody2D"]
-collision_layer = 1024
-collision_mask = 1024
+collision_layer = 2048
+collision_mask = 0
 gravity_scale = 0.0
 script = ExtResource( 1 )
 __meta__ = {

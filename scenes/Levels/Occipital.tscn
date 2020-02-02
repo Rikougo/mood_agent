@@ -207,6 +207,8 @@ position = Vector2( -2348.51, 1516.58 )
 
 [node name="CBlock" parent="FirstZone" instance=ExtResource( 28 )]
 position = Vector2( -3542.7, 1507.03 )
+collision_layer = 1024
+collision_mask = 1024
 
 [node name="SecondZone" type="Node2D" parent="."]
 

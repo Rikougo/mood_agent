@@ -8,7 +8,8 @@ var velocity = Vector2()
 func _ready():
 	set_bounce(0.8)
 	modulate = Colors.POOL[color]
-	
+
+func _process(delta):
 	collision_layer = color
 
 func _physics_process(delta):
