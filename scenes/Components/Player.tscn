@@ -1,98 +1,99 @@
 [gd_scene load_steps=55 format=2]
 
 [ext_resource path="res://scripts/Components/Player.gd" type="Script" id=1]
-[ext_resource path="res://assets/sprites/player/base/base0000.png" type="Texture" id=2]
-[ext_resource path="res://assets/sprites/player/base/base0001.png" type="Texture" id=3]
-[ext_resource path="res://assets/sprites/player/base/base0002.png" type="Texture" id=4]
-[ext_resource path="res://assets/sprites/player/base/base0003.png" type="Texture" id=5]
-[ext_resource path="res://assets/sprites/player/base/base0004.png" type="Texture" id=6]
-[ext_resource path="res://assets/sprites/player/base/base0005.png" type="Texture" id=7]
-[ext_resource path="res://assets/sprites/player/base/base0006.png" type="Texture" id=8]
-[ext_resource path="res://assets/sprites/player/base/base0007.png" type="Texture" id=9]
-[ext_resource path="res://assets/sprites/player/base/base0008.png" type="Texture" id=10]
-[ext_resource path="res://assets/sprites/player/base/base0009.png" type="Texture" id=11]
-[ext_resource path="res://assets/sprites/player/base/base0010.png" type="Texture" id=12]
-[ext_resource path="res://assets/sprites/player/base/base0011.png" type="Texture" id=13]
-[ext_resource path="res://assets/sprites/player/idle/idle0000.png" type="Texture" id=14]
-[ext_resource path="res://assets/sprites/player/idle/idle0001.png" type="Texture" id=15]
-[ext_resource path="res://assets/sprites/player/idle/idle0002.png" type="Texture" id=16]
-[ext_resource path="res://assets/sprites/player/idle/idle0003.png" type="Texture" id=17]
-[ext_resource path="res://assets/sprites/player/idle/idle0004.png" type="Texture" id=18]
-[ext_resource path="res://assets/sprites/player/idle/idle0005.png" type="Texture" id=19]
-[ext_resource path="res://assets/sprites/player/idle/idle0006.png" type="Texture" id=20]
-[ext_resource path="res://assets/sprites/player/idle/idle0007.png" type="Texture" id=21]
-[ext_resource path="res://assets/sprites/player/idle/idle0008.png" type="Texture" id=22]
-[ext_resource path="res://assets/sprites/player/idle/idle0009.png" type="Texture" id=23]
-[ext_resource path="res://assets/sprites/player/idle/idle0010.png" type="Texture" id=24]
-[ext_resource path="res://assets/sprites/player/idle/idle0011.png" type="Texture" id=25]
-[ext_resource path="res://assets/sprites/player/swimming/swimming0000.png" type="Texture" id=26]
-[ext_resource path="res://assets/sprites/player/swimming/swimming0001.png" type="Texture" id=27]
-[ext_resource path="res://assets/sprites/player/swimming/swimming0002.png" type="Texture" id=28]
-[ext_resource path="res://assets/sprites/player/swimming/swimming0003.png" type="Texture" id=29]
-[ext_resource path="res://assets/sprites/player/swimming/swimming0004.png" type="Texture" id=30]
-[ext_resource path="res://assets/sprites/player/swimming/swimming0005.png" type="Texture" id=31]
-[ext_resource path="res://assets/sprites/player/swimming/swimming0006.png" type="Texture" id=32]
-[ext_resource path="res://assets/sprites/player/swimming/swimming0007.png" type="Texture" id=33]
-[ext_resource path="res://assets/sprites/player/swimming/swimming0008.png" type="Texture" id=34]
-[ext_resource path="res://assets/sprites/player/swimming/swimming0009.png" type="Texture" id=35]
-[ext_resource path="res://assets/sprites/player/swimming/swimming0010.png" type="Texture" id=36]
-[ext_resource path="res://assets/sprites/player/swimming/swimming0011.png" type="Texture" id=37]
-[ext_resource path="res://assets/sprites/player/swimming/swimming0012.png" type="Texture" id=38]
-[ext_resource path="res://assets/sprites/player/starting/starting0000.png" type="Texture" id=39]
-[ext_resource path="res://assets/sprites/player/starting/starting0001.png" type="Texture" id=40]
-[ext_resource path="res://assets/sprites/player/starting/starting0002.png" type="Texture" id=41]
-[ext_resource path="res://assets/light.png" type="Texture" id=42]
-[ext_resource path="res://assets/sprites/xbox_x_Button0.png" type="Texture" id=43]
-[ext_resource path="res://assets/sprites/xbox_x_Button3.png" type="Texture" id=44]
-[ext_resource path="res://assets/sprites/xbox_x_Button6.png" type="Texture" id=45]
-[ext_resource path="res://assets/sprites/xbox_x_Button9.png" type="Texture" id=46]
-[ext_resource path="res://assets/Font/Handrawn.tres" type="DynamicFont" id=47]
+[ext_resource path="res://assets/light.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/player/base/base0000.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/player/base/base0001.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprites/player/base/base0002.png" type="Texture" id=5]
+[ext_resource path="res://assets/sprites/player/base/base0003.png" type="Texture" id=6]
+[ext_resource path="res://assets/sprites/player/base/base0004.png" type="Texture" id=7]
+[ext_resource path="res://assets/sprites/player/base/base0005.png" type="Texture" id=8]
+[ext_resource path="res://assets/sprites/player/base/base0006.png" type="Texture" id=9]
+[ext_resource path="res://assets/sprites/player/base/base0007.png" type="Texture" id=10]
+[ext_resource path="res://assets/sprites/player/base/base0008.png" type="Texture" id=11]
+[ext_resource path="res://assets/sprites/player/base/base0009.png" type="Texture" id=12]
+[ext_resource path="res://assets/sprites/player/base/base0010.png" type="Texture" id=13]
+[ext_resource path="res://assets/sprites/player/base/base0011.png" type="Texture" id=14]
+[ext_resource path="res://assets/sprites/player/idle/idle0000.png" type="Texture" id=15]
+[ext_resource path="res://assets/sprites/player/idle/idle0001.png" type="Texture" id=16]
+[ext_resource path="res://assets/sprites/player/idle/idle0002.png" type="Texture" id=17]
+[ext_resource path="res://assets/sprites/player/idle/idle0003.png" type="Texture" id=18]
+[ext_resource path="res://assets/sprites/player/idle/idle0004.png" type="Texture" id=19]
+[ext_resource path="res://assets/sprites/player/idle/idle0005.png" type="Texture" id=20]
+[ext_resource path="res://assets/sprites/player/idle/idle0006.png" type="Texture" id=21]
+[ext_resource path="res://assets/sprites/player/idle/idle0007.png" type="Texture" id=22]
+[ext_resource path="res://assets/sprites/player/idle/idle0008.png" type="Texture" id=23]
+[ext_resource path="res://assets/sprites/player/idle/idle0009.png" type="Texture" id=24]
+[ext_resource path="res://assets/sprites/player/idle/idle0010.png" type="Texture" id=25]
+[ext_resource path="res://assets/sprites/player/idle/idle0011.png" type="Texture" id=26]
+[ext_resource path="res://assets/sprites/player/starting/starting0000.png" type="Texture" id=27]
+[ext_resource path="res://assets/sprites/player/starting/starting0001.png" type="Texture" id=28]
+[ext_resource path="res://assets/sprites/player/starting/starting0002.png" type="Texture" id=29]
+[ext_resource path="res://assets/sprites/player/swimming/swimming0000.png" type="Texture" id=30]
+[ext_resource path="res://assets/sprites/player/swimming/swimming0001.png" type="Texture" id=31]
+[ext_resource path="res://assets/sprites/player/swimming/swimming0002.png" type="Texture" id=32]
+[ext_resource path="res://assets/sprites/player/swimming/swimming0003.png" type="Texture" id=33]
+[ext_resource path="res://assets/sprites/player/swimming/swimming0004.png" type="Texture" id=34]
+[ext_resource path="res://assets/sprites/player/swimming/swimming0005.png" type="Texture" id=35]
+[ext_resource path="res://assets/sprites/player/swimming/swimming0006.png" type="Texture" id=36]
+[ext_resource path="res://assets/sprites/player/swimming/swimming0007.png" type="Texture" id=37]
+[ext_resource path="res://assets/sprites/player/swimming/swimming0008.png" type="Texture" id=38]
+[ext_resource path="res://assets/sprites/player/swimming/swimming0009.png" type="Texture" id=39]
+[ext_resource path="res://assets/sprites/player/swimming/swimming0010.png" type="Texture" id=40]
+[ext_resource path="res://assets/sprites/player/swimming/swimming0011.png" type="Texture" id=41]
+[ext_resource path="res://assets/sprites/player/swimming/swimming0012.png" type="Texture" id=42]
+[ext_resource path="res://assets/Font/Handrawn.tres" type="DynamicFont" id=43]
+[ext_resource path="res://assets/sprites/xbox_x_Button0.png" type="Texture" id=44]
+[ext_resource path="res://assets/sprites/xbox_x_Button3.png" type="Texture" id=45]
+[ext_resource path="res://assets/sprites/xbox_x_Button6.png" type="Texture" id=46]
+[ext_resource path="res://assets/sprites/xbox_x_Button9.png" type="Texture" id=47]
 [ext_resource path="res://assets/sprites/cross.png" type="Texture" id=48]
 [ext_resource path="res://assets/sprites/circle.png" type="Texture" id=49]
 
-[sub_resource type="ParticlesMaterial" id=2]
+[sub_resource type="ParticlesMaterial" id=1]
 emission_shape = 1
 emission_sphere_radius = 128.0
 flag_disable_z = true
 gravity = Vector3( 0, 0, 0 )
+angular_velocity = 9.24444
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 20.0
 scale_random = 1.0
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
 "loop": true,
 "name": "base",
 "speed": 12.0
 } ]
 
-[sub_resource type="SpriteFrames" id=4]
+[sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ) ],
+"frames": [ ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ) ],
 "loop": true,
 "name": "idle",
 "speed": 12.0
 }, {
-"frames": [ ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ) ],
-"loop": true,
-"name": "swimming",
-"speed": 12.0
-}, {
-"frames": [ ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ) ],
+"frames": [ ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ) ],
 "loop": true,
 "name": "starting",
 "speed": 12.0
+}, {
+"frames": [ ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ) ],
+"loop": true,
+"name": "swimming",
+"speed": 12.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=5]
+[sub_resource type="CapsuleShape2D" id=4]
 radius = 155.227
 height = 44.9634
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="SpriteFrames" id=5]
 animations = [ {
-"frames": [ ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 46 ) ],
+"frames": [ ExtResource( 44 ), ExtResource( 45 ), ExtResource( 46 ), ExtResource( 47 ) ],
 "loop": true,
 "name": "default",
 "speed": 7.0
@@ -104,19 +105,22 @@ script = ExtResource( 1 )
 cameraDefault = Vector2( 2.5, 2.5 )
 cameraZoom = Vector2( 2, 2 )
 
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
 [node name="Particles" type="Particles2D" parent="."]
 amount = 50
 lifetime = 2.0
 speed_scale = 2.0
 local_coords = false
-process_material = SubResource( 2 )
+process_material = SubResource( 1 )
 __meta__ = {
 "_edit_lock_": true,
 "_editor_description_": ""
 }
 
 [node name="Light2D" type="Light2D" parent="."]
-texture = ExtResource( 42 )
+texture = ExtResource( 2 )
 texture_scale = 2.0
 energy = 0.75
 range_height = 1.0
@@ -127,9 +131,9 @@ __meta__ = {
 
 [node name="Base" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -12.3033 )
-frames = SubResource( 3 )
+frames = SubResource( 2 )
 animation = "base"
-frame = 4
+frame = 9
 playing = true
 __meta__ = {
 "_edit_lock_": true
@@ -137,7 +141,7 @@ __meta__ = {
 
 [node name="Visage" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -12.3033 )
-frames = SubResource( 4 )
+frames = SubResource( 3 )
 animation = "swimming"
 frame = 12
 playing = true
@@ -146,12 +150,13 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Top_pop_up" type="Node2D" parent="."]
+editor/display_folded = true
 visible = false
 __meta__ = {
 "_edit_lock_": true
@@ -162,7 +167,7 @@ margin_left = -369.0
 margin_top = -279.0
 margin_right = 360.0
 margin_bottom = -191.0
-custom_fonts/font = ExtResource( 47 )
+custom_fonts/font = ExtResource( 43 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "test"
 align = 1
@@ -174,8 +179,7 @@ __meta__ = {
 [node name="xBox_X" type="AnimatedSprite" parent="Top_pop_up"]
 position = Vector2( -13.3285, -345.518 )
 scale = Vector2( 0.351193, 0.351193 )
-frames = SubResource( 1 )
-frame = 3
+frames = SubResource( 5 )
 playing = true
 __meta__ = {
 "_edit_lock_": true
@@ -190,6 +194,7 @@ __meta__ = {
 }
 
 [node name="Color_Menu" type="Node2D" parent="."]
+editor/display_folded = true
 visible = false
 
 [node name="C_up" type="Sprite" parent="Color_Menu"]

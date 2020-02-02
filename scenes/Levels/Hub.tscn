@@ -1,61 +1,61 @@
 [gd_scene load_steps=28 format=2]
 
-[ext_resource path="res://assets/sprites/zones/hub/open0013.png" type="Texture" id=1]
-[ext_resource path="res://assets/sprites/zones/hub/open0019.png" type="Texture" id=2]
-[ext_resource path="res://assets/sprites/zones/hub/open0014.png" type="Texture" id=3]
-[ext_resource path="res://assets/sprites/zones/hub/open0022.png" type="Texture" id=4]
-[ext_resource path="res://assets/sprites/zones/hub/open0016.png" type="Texture" id=5]
-[ext_resource path="res://assets/sprites/zones/hub/open0021.png" type="Texture" id=6]
-[ext_resource path="res://scenes/Components/Player.tscn" type="PackedScene" id=7]
-[ext_resource path="res://assets/sprites/zones/hub/open0003.png" type="Texture" id=8]
-[ext_resource path="res://assets/sprites/zones/hub/open0004.png" type="Texture" id=9]
-[ext_resource path="res://assets/sprites/zones/hub/open0002.png" type="Texture" id=10]
-[ext_resource path="res://assets/sprites/zones/hub/open0001.png" type="Texture" id=11]
-[ext_resource path="res://assets/sprites/zones/hub/open0000.png" type="Texture" id=12]
-[ext_resource path="res://assets/sprites/zones/hub/open0005.png" type="Texture" id=13]
-[ext_resource path="res://assets/sprites/zones/hub/open0006.png" type="Texture" id=14]
-[ext_resource path="res://assets/sprites/zones/hub/open0007.png" type="Texture" id=15]
-[ext_resource path="res://assets/sprites/zones/hub/open0008.png" type="Texture" id=16]
-[ext_resource path="res://assets/sprites/zones/hub/open0009.png" type="Texture" id=17]
-[ext_resource path="res://assets/sprites/zones/hub/open0012.png" type="Texture" id=18]
-[ext_resource path="res://assets/sprites/zones/hub/open0010.png" type="Texture" id=19]
-[ext_resource path="res://assets/sprites/zones/hub/open0011.png" type="Texture" id=20]
-[ext_resource path="res://assets/sprites/zones/hub/open0015.png" type="Texture" id=21]
-[ext_resource path="res://assets/sprites/zones/hub/open0018.png" type="Texture" id=22]
-[ext_resource path="res://assets/sprites/zones/hub/open0020.png" type="Texture" id=23]
-[ext_resource path="res://scripts/Scenes/Hub.gd" type="Script" id=24]
+[ext_resource path="res://scripts/Scenes/Hub.gd" type="Script" id=1]
+[ext_resource path="res://assets/sprites/zones/hub/open0000.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/zones/hub/open0005.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/zones/hub/open0006.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprites/zones/hub/open0007.png" type="Texture" id=5]
+[ext_resource path="res://assets/sprites/zones/hub/open0008.png" type="Texture" id=6]
+[ext_resource path="res://assets/sprites/zones/hub/open0018.png" type="Texture" id=7]
+[ext_resource path="res://assets/sprites/zones/hub/open0019.png" type="Texture" id=8]
+[ext_resource path="res://assets/sprites/zones/hub/open0020.png" type="Texture" id=9]
+[ext_resource path="res://assets/sprites/zones/hub/open0021.png" type="Texture" id=10]
+[ext_resource path="res://assets/sprites/zones/hub/open0022.png" type="Texture" id=11]
+[ext_resource path="res://assets/sprites/zones/hub/open0013.png" type="Texture" id=12]
+[ext_resource path="res://assets/sprites/zones/hub/open0014.png" type="Texture" id=13]
+[ext_resource path="res://assets/sprites/zones/hub/open0015.png" type="Texture" id=14]
+[ext_resource path="res://assets/sprites/zones/hub/open0016.png" type="Texture" id=15]
+[ext_resource path="res://assets/sprites/zones/hub/open0009.png" type="Texture" id=16]
+[ext_resource path="res://assets/sprites/zones/hub/open0010.png" type="Texture" id=17]
+[ext_resource path="res://assets/sprites/zones/hub/open0011.png" type="Texture" id=18]
+[ext_resource path="res://assets/sprites/zones/hub/open0012.png" type="Texture" id=19]
+[ext_resource path="res://assets/sprites/zones/hub/open0001.png" type="Texture" id=20]
+[ext_resource path="res://assets/sprites/zones/hub/open0002.png" type="Texture" id=21]
+[ext_resource path="res://assets/sprites/zones/hub/open0003.png" type="Texture" id=22]
+[ext_resource path="res://assets/sprites/zones/hub/open0004.png" type="Texture" id=23]
+[ext_resource path="res://scenes/Components/Player.tscn" type="PackedScene" id=24]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 22 ), ExtResource( 2 ), ExtResource( 23 ), ExtResource( 6 ), ExtResource( 4 ) ],
-"loop": false,
-"name": "open_center",
-"speed": 12.0
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "hub",
+"speed": 5.0
 }, {
-"frames": [ ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ],
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
 "loop": false,
 "name": "open_temporal",
 "speed": 12.0
 }, {
-"frames": [ ExtResource( 1 ), ExtResource( 3 ), ExtResource( 21 ), ExtResource( 5 ) ],
-"loop": false,
-"name": "open_parietal",
-"speed": 12.0
-}, {
-"frames": [ ExtResource( 17 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 18 ) ],
+"frames": [ ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ) ],
 "loop": false,
 "name": "open_frontal",
 "speed": 12.0
 }, {
-"frames": [ ExtResource( 12 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ) ],
 "loop": false,
 "name": "open_occipital",
 "speed": 12.0
 }, {
-"frames": [ ExtResource( 12 ) ],
-"loop": true,
-"name": "hub",
-"speed": 5.0
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ],
+"loop": false,
+"name": "open_center",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ],
+"loop": false,
+"name": "open_parietal",
+"speed": 12.0
 } ]
 
 [sub_resource type="Shader" id=2]
@@ -76,7 +76,7 @@ shader = SubResource( 2 )
 shader_param/u_colorFactor = 1.0
 
 [node name="Node2D" type="Node2D"]
-script = ExtResource( 24 )
+script = ExtResource( 1 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0.337255, 0.337255, 0.337255, 1 )
@@ -90,7 +90,6 @@ __meta__ = {
 }
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Structures"]
-position = Vector2( 157.699, 292.854 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
 animation = "open_parietal"
@@ -101,7 +100,6 @@ __meta__ = {
 }
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Structures"]
-position = Vector2( 157.699, 292.854 )
 scale = Vector2( 2, 2 )
 polygon = PoolVector2Array( -42.0212, -516.668, 30.8759, -526.582, 98.5244, -521.334, 144.892, -510.525, 190.284, -502.843, 226.248, -499.701, 256.277, -500.399, 287.702, -501.098, 331.802, -498.777, 373.784, -489.259, 425.103, -475.263, 467.092, -456.018, 509.081, -435.023, 553.985, -421.027, 586.06, -405.864, 614.053, -384.287, 646.711, -354.545, 672.954, -318.971, 715.604, -261.645, 733.319, -235.42, 754.983, -213.674, 769.303, -190.046, 782.711, -158.17, 787.919, -128.471, 795.078, -86.9439, 812.978, -48.9965, 832.31, -16.0611, 831.594, 42.65, 822.286, 99.9291, 807.717, 132.829, 791.756, 167.82, 772.112, 215.702, 757.993, 264.812, 744.243, 308.282, 722.389, 345.229, 694.765, 377.15, 661.189, 396.348, 623.957, 410.668, 594.704, 429.943, 561.555, 437.309, 527.299, 443.603, 482.192, 461.503, 434.001, 467.998, 382.669, 468.663, 346.767, 471.229, 308.137, 471.259, 268.698, 468.258, 219.399, 467.4, 184.151, 468.89, 151.519, 469.416, 125.945, 466.114, 98.0798, 459.684, 55.211, 452.396, 11.4847, 442.108, -38.6718, 429.676, -86.6849, 415.958, -135.555, 400.525, -185.825, 387.756, -225.58, 373.089, -260.732, 362.372, -311.318, 350.368, -355.044, 331.077, -397.484, 306.213, -435.705, 276.062, -466.493, 240.263, -498.849, 205.416, -524.638, 165.942, -553.586, 139.1, -585.691, 124.363, -634.638, 106.995, -671.084, 86.6635, -696.743, 56.9215, -711.906, 23.0972, -714.239, -17.142, -710.156, -59.7139, -689.162, -101.119, -661.957, -124.891, -609.69, -161.407, -566.731, -209.378, -518.044, -260.929, -463.629, -309.616, -414.941, -360.451, -355.515, -409.854, -292.508, -454.962, -233.081, -483.601, -170.074, -503.649, -104.203, -513.673, -43.1876, -516.668, -44.0889, -604.394, -387.018, -637.539, -817.589, -395.225, -909.146, -117.632, -907.198, 83.0143, -379.283, 671.107, 464.211, 634.095, 1143.1, 177.283, 760.311, -601.926, 146.683, -652.074, -38.6725, -604.394 )
 __meta__ = {
@@ -110,25 +108,20 @@ __meta__ = {
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource( 3 )
-margin_left = -8267.0
-margin_top = -5280.0
-margin_right = 8612.0
-margin_bottom = 5912.0
+margin_left = -8302.11
+margin_top = -5350.23
+margin_right = 8576.89
+margin_bottom = 5841.77
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Player" parent="." instance=ExtResource( 7 )]
-position = Vector2( -11.5103, 224.562 )
+[node name="Player" parent="." instance=ExtResource( 24 )]
+position = Vector2( -323.788, -192.009 )
 cameraZoom = Vector2( 1.5, 1.5 )
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-current = true
-__meta__ = {
-"_edit_lock_": true
-}
-
 [node name="Node2D" type="Node2D" parent="."]
+position = Vector2( -150, -300 )
 __meta__ = {
 "_edit_lock_": true
 }

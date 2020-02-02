@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "Colors",
 "language": "GDScript",
 "path": "res://scripts/Global/Colors.gd"
+}, {
+"base": "Reference",
+"class": "Levels",
+"language": "GDScript",
+"path": "res://scripts/Global/Levels.gd"
 } ]
 _global_script_class_icons={
-"Colors": ""
+"Colors": "",
+"Levels": ""
 }
 
 [application]
@@ -23,6 +29,10 @@ _global_script_class_icons={
 config/name="Game Jam"
 run/main_scene="res://scenes/Main.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Game="*res://scripts/Game.gd"
 
 [display]
 

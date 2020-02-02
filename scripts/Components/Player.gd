@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+onready var game = get_node("/root/Game")
+
 const Colors = preload("res://scripts/Global/Colors.gd")
 
 export var COLOR_SCALE = 1.25
@@ -41,6 +43,12 @@ signal exitSlowMode
 
 var transitionReversed = false
 
+func set_camera_limit(limit: Rect2) -> void:
+	$Camera2D.limit_left = limit.position.x
+	$Camera2D.limit_right = limit.end.x
+	$Camera2D.limit_top = limit.position.y
+	$Camera2D.limit_bottom = limit.end.y
+
 func _ready():
 	$Color_Menu/C_up.modulate = Colors.POOL[Colors.BLUE]
 	$Color_Menu/C_down.modulate = Colors.POOL[Colors.PINK]
@@ -72,20 +80,16 @@ func _physics_process(delta):
 	$Particles.get_process_material().set_gravity(Vector3(motion.x * -1, motion.y * -1, 0).normalized()) 
 	move_and_slide(motion)
 	
-	# ---- END PLAYER MOVEMENT ---- #
-
 func _input(event):
 	if event.is_action_pressed("ui_accept"):
 		if state == State.TEMPORAL:
-			get_tree().change_scene("res://scenes/Levels/Temporal.tscn")
+			game.goto_scene(Game.TEMPORAL)
 		if state == State.FRONTAL:
-			get_tree().change_scene("res://scenes/Levels/Frontal.tscn")
+			game.goto_scene(Game.FRONTAL)
 		if state == State.OCCIPITAL:
-			get_tree().change_scene("res://scenes/Levels/Occipital.tscn")
+			game.goto_scene(Game.OCCIPITAL)
 		if state == State.PARIETAL:
-			get_tree().change_scene("res://scenes/Levels/Parietal.tscn")
-		if state == State.LETTER:
-			emit_signal("change_it")
+			game.goto_scene(Game.PARIETAL)
 		
 	if event.is_action_pressed("Color_DEFAULT"):
 		color = Colors.DEFAULT
