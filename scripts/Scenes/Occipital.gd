@@ -2,6 +2,8 @@ extends Node2D
 
 var lastOpened = 0
 
+const PATH = "res://scenes/Levels/Occipital.tscn"
+
 onready var game = get_node("/root/Game")
 
 func _ready():

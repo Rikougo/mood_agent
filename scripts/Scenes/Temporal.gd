@@ -1,28 +1,9 @@
 extends Node2D
-
-var AREAS
-
-const HUB_ANIMATIONS = [
-	"open_occipital",
-	"open_temporal",
-	"open_frontal",
-	"open_parietal",
-	"open_center"
-	]
-
-const PATH = "res://scenes/Levels/Hub.tscn"
-
 onready var game = get_node("/root/Game")
 
+const PATH = "res://scenes/Levels/Temporal.tscn"
+
 func _ready():
-	AREAS = [
-		get_node("Node2D/Occipital"),
-		get_node("Node2D/Temporal"),
-		get_node("Node2D/Frontal"),
-		get_node("Node2D/Parietal"),
-		get_node("Node2D/Center")
-	]
-	
 	var frame = $Structures/AnimatedSprite.frame
 	var anim  = $Structures/AnimatedSprite.animation
 	var scale = $Structures/AnimatedSprite.scale
@@ -31,13 +12,25 @@ func _ready():
 	
 	$Player.set_camera_limit(Rect2(- size.x / 2, - size.y / 2, size.x, size.y))
 	
-	for i in range(game.levelCompleted + 1):
-		AREAS[i].get_node("CollisionPolygon2D").set_disabled(false)
-		
-	$Structures/AnimatedSprite.play(HUB_ANIMATIONS[game.levelCompleted])
+	$Structures/AnimatedSprite.set_animation("firstGate")
+	$Structures/AnimatedSprite.set_frame(0)
+	$Structures/AnimatedSprite.stop()
 
 func _on_Player_enterSlowMode():
+	print("t")
 	$ColorRect.material.set_shader_param("u_colorFactor", 0.1)
-
+	
 func _on_Player_exitSlowMode():
 	$ColorRect.material.set_shader_param("u_colorFactor", 1.0)
+
+func _wordOne_completed():
+	$Structures/AnimatedSprite.play("firstGate")
+	$Structures/GateOne.queue_free()
+	
+func _wordTwo_completed():
+	$Structures/AnimatedSprite.play("secondGate")
+	$Structures/GateTwo.queue_free()
+	
+func _wordThree_completed():
+	$Structures/AnimatedSprite.play("lastGate")
+	$Structures/GateThree.queue_free()

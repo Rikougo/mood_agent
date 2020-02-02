@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scripts/Components/ColorGathering/CBlock.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/props/crate.png" type="Texture" id=2]
@@ -6,10 +6,9 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 85.4685, 91.1723 )
 
-[sub_resource type="OccluderPolygon2D" id=2]
-polygon = PoolVector2Array( -91.0006, -76.4489, -82.6606, -76.5675, -80.6746, 68.0192, -80.6746, 75.9635, -89.4133, 75.9635, -89.4133, 91.455, 90.9871, 91.0097, 91.335, 75.7, 80.8966, 76.048, 84.2049, -66.1383, 84.5459, -73.1295, 94.2654, -73.2147, 94.2654, -91.0337, -90.637, -90.2341 )
-
 [node name="CBlock" type="RigidBody2D"]
+collision_layer = 1024
+collision_mask = 1024
 gravity_scale = 0.0
 script = ExtResource( 1 )
 __meta__ = {
@@ -23,6 +22,4 @@ texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
-occluder = SubResource( 2 )
+[connection signal="body_entered" from="." to="." method="_on_CBlock_body_entered"]

@@ -16,8 +16,13 @@ var loader
 var wait_frames
 var time_max = 100 # msec
 var current_scene
+var current_path
 
 var levelCompleted = 0
+
+func _input(event):
+	if event.is_action_pressed("ui_select"):
+		goto_scene(current_scene.PATH)
 
 func _ready():
 	var root = get_tree().get_root()
@@ -30,6 +35,7 @@ func goto_scene(path): # game requests to switch to this scene
 		return
 	set_process(true)
 
+	current_path = path
 	current_scene.queue_free() # get rid of the old scene
 
 func _process(time):
@@ -60,6 +66,7 @@ func update_progress():
 	pass
 
 func set_new_scene(scene_resource):
+	
 	current_scene = scene_resource.instance()
 	get_node("/root").add_child(current_scene)
 

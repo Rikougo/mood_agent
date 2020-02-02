@@ -133,7 +133,7 @@ __meta__ = {
 position = Vector2( 0, -12.3033 )
 frames = SubResource( 2 )
 animation = "base"
-frame = 10
+frame = 9
 playing = true
 __meta__ = {
 "_edit_lock_": true
@@ -143,7 +143,7 @@ __meta__ = {
 position = Vector2( 0, -12.3033 )
 frames = SubResource( 3 )
 animation = "swimming"
-frame = 10
+frame = 5
 playing = true
 __meta__ = {
 "_edit_lock_": true
@@ -179,6 +179,7 @@ __meta__ = {
 position = Vector2( -13.3285, -345.518 )
 scale = Vector2( 0.351193, 0.351193 )
 frames = SubResource( 5 )
+frame = 3
 playing = true
 __meta__ = {
 "_edit_lock_": true

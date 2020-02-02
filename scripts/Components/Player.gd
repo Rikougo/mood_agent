@@ -117,6 +117,7 @@ func _input(event):
 
 func _process(delta):
 	var modulateColor = Colors.POOL[color]
+	collision_mask = color
 
 	if state == State.SLOW_MO:
 		if canvasMod:
@@ -160,10 +161,10 @@ func _process(delta):
 		
 func _on_Parietal_body_entered(body):
 	if state == State.NORMAL && body == self:
-		state = State.PARIETAL
+		state = State.INCAPACITATE
 
 func _on_Parietal_body_exited(body):
-	if state == State.PARIETAL and body == self:
+	if state == State.INCAPACITATE and body == self:
 		state = State.NORMAL
 
 func _on_Temporal_body_entered(body):
@@ -176,10 +177,10 @@ func _on_Temporal_body_exited(body):
 
 func _on_Frontal_body_entered(body):
 	if state == State.NORMAL && body == self:
-		state = State.FRONTAL
+		state = State.INCAPACITATE
 
 func _on_Frontal_body_exited(body):
-	if state == State.FRONTAL and body == self:
+	if state == State.INCAPACITATE and body == self:
 		state = State.NORMAL
 
 func _on_Occipital_body_entered(body):

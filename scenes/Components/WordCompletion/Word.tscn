@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scripts/Components/WordCompletion/Word.gd" type="Script" id=1]
+[ext_resource path="res://assets/Font/HandrawnProps.tres" type="DynamicFont" id=2]
+[ext_resource path="res://scripts/Components/WordCompletion/WordShape.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[node name="Mot" type="RigidBody2D"]
+collision_layer = 1024
+collision_mask = 1024
+mode = 2
+gravity_scale = 0.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="."]
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+script = ExtResource( 3 )

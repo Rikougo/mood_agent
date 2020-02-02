@@ -88,6 +88,8 @@ __meta__ = {
 }
 
 [node name="Structures" type="StaticBody2D" parent="."]
+collision_layer = 1055
+collision_mask = 1055
 __meta__ = {
 "_edit_lock_": true
 }
