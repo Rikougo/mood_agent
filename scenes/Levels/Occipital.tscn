@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://shaders/desaturation.shader" type="Shader" id=1]
 [ext_resource path="res://scenes/Components/Player.tscn" type="PackedScene" id=2]
@@ -26,6 +26,9 @@
 [ext_resource path="res://assets/sprites/zones/occipital/occipital0014.png" type="Texture" id=24]
 [ext_resource path="res://assets/sprites/zones/occipital/occipital0016.png" type="Texture" id=25]
 [ext_resource path="res://scripts/Scenes/Occipital.gd" type="Script" id=26]
+[ext_resource path="res://scenes/Components/ColorGathering/BlackHole.tscn" type="PackedScene" id=27]
+[ext_resource path="res://scenes/Components/ColorGathering/CBlock.tscn" type="PackedScene" id=28]
+[ext_resource path="res://scenes/Components/ColorGathering/CHole.tscn" type="PackedScene" id=29]
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -92,6 +95,9 @@ __meta__ = {
 [node name="background" type="Sprite" parent="Structures"]
 scale = Vector2( 2.5, 2.5 )
 texture = ExtResource( 17 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Structures"]
 scale = Vector2( 2.5, 2.5 )
@@ -102,13 +108,18 @@ __meta__ = {
 }
 
 [node name="ExternWall" type="CollisionPolygon2D" parent="Structures"]
+visible = false
 polygon = PoolVector2Array( -4714.89, -1597.84, -4502.38, -1571.28, -4380.95, -1685.12, -4191.21, -1897.63, -3997.67, -2060.8, -3743.42, -2182.24, -3348.76, -2265.72, -3105.9, -2299.88, -2529.09, -2254.34, -1902.95, -2106.34, -1481.73, -1965.93, -1212.3, -1848.3, -954.25, -1742.04, -696.204, -1711.68, -472.311, -1738.25, -271.187, -1829.32, -70.063, -1996.29, 172.804, -2205.01, 567.463, -2406.13, 844.483, -2470.64, 1167.04, -2535.15, 1516.16, -2557.92, 1781.8, -2523.77, 2020.87, -2455.46, 2252.35, -2360.59, 2502.81, -2246.75, 2707.73, -2098.75, 2844.34, -1912.81, 2943, -1719.27, 3011.31, -1480.2, 3056.85, -1172.82, 3049.26, -986.877, 2965.77, -709.857, 2840.54, -501.143, 2738.09, -372.12, 2647.01, -288.635, 2567.32, -239.302, 2430.71, -220.328, 2282.71, -224.123, 2157.48, -205.149, 2062.61, -155.817, 2028.46, -53.3572, 2066.41, 56.6919, 2168.87, 216.073, 2225.79, 352.686, 2233.38, 474.119, 2221.99, 622.116, 2146.1, 834.625, 1842.51, 1225.49, 1724.87, 1365.9, 1546.52, 1525.28, 1307.45, 1646.71, 912.789, 1775.73, 563.667, 1847.83, 241.11, 1950.29, -85.2424, 2037.57, -468.517, 2143.83, -696.204, 2215.93, -847.996, 2238.7, -1014.97, 2234.9, -1170.55, 2177.98, -1299.58, 2102.09, -1371.68, 2045.16, -1477.93, 2045.16, -1542.44, 2083.11, -1660.08, 2250.08, -1806.01, 2367.5, -2086.83, 2488.94, -2409.38, 2576.22, -2792.66, 2640.73, -3137.98, 2655.91, -3449.16, 2625.55, -3729.97, 2576.22, -3832.43, 2526.89, -3927.3, 2401.66, -4067.71, 2257.46, -4204.32, 2117.05, -4333.34, 2067.72, -4424.42, 2060.13, -4492.73, 2124.64, -4517.12, 2179.18, -4611.35, 1857.24, -4619.34, 1473.77, -4643.3, 1337.95, -4886.97, 1230.1, -5234.49, 1405.86, -5174.39, 3841.42, 1591.51, 4359.98, 3745.35, 3569.8, 5646.72, -381.096, 4770.11, -3010.91, -2532.23, -3551.53, -5421.32, -2749.01 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="InternWall" type="CollisionPolygon2D" parent="Structures"]
+visible = false
 polygon = PoolVector2Array( -4823.72, 1187.96, -4666.14, 1323.81, -4562.89, 1378.15, -4448.77, 1372.72, -4378.13, 1285.77, -4323.79, 1149.92, -4269.45, 1231.43, -4209.68, 1231.43, -4139.03, 1187.96, -4139.03, 1095.58, -4128.17, 970.6, -4084.69, 774.975, -3997.75, 666.294, -3856.46, 568.481, -3628.23, 492.404, -3410.87, 476.102, -3014.19, 470.668, -2726.18, 508.707, -2481.65, 563.047, -2209.95, 655.426, -1938.25, 780.409, -1764.36, 932.562, -1666.54, 1073.85, -1557.86, 1264.04, -1503.52, 1389.02, -1394.84, 1432.49, -1215.52, 1323.81, -835.137, 970.6, -563.435, 720.634, -280.864, 497.838, -96.1069, 361.987, 45.1782, 193.532, 365.787, -34.6982, 767.906, -186.852, 1028.74, -224.89, 1262.4, -219.456, 1419.99, -268.362, 1398.26, -398.779, 1235.23, -540.064, 811.378, -643.311, 425.562, -784.596, -14.5959, -980.222, -199.354, -1067.17, -346.073, -1164.98, -460.188, -1197.58, -579.737, -1170.41, -644.945, -1116.07, -715.588, -947.618, -916.647, -719.388, -1356.84, -438.343, -1604.64, -319.609, -1862.75, -237.012, -2110.54, -175.064, -2337.69, -138.927, -2673.24, -128.603, -3230.77, -159.577, -3545.67, -237.012, -3896.71, -360.908, -4185.8, -520.941, -4299.38, -613.863, -4412.95, -737.759, -4474.9, -851.331, -4567.82, -1021.69, -4665.9, -1042.34, -4784.64, -1016.53, -4820.77, -933.928, -4879.74, -1678.3, -5314.31, -1644.87, -5325.45, 995.963 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Occluders" type="Node" parent="Structures"]
 
@@ -120,30 +131,61 @@ __meta__ = {
 
 [node name="Extern" type="LightOccluder2D" parent="Structures/Occluders"]
 occluder = SubResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="GateOne" type="LightOccluder2D" parent="Structures/Occluders"]
 occluder = SubResource( 5 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="GateTwo" type="LightOccluder2D" parent="Structures/Occluders"]
 occluder = SubResource( 6 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="GateThree" type="LightOccluder2D" parent="Structures/Occluders"]
 occluder = SubResource( 7 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="GateFour" type="LightOccluder2D" parent="Structures/Occluders"]
 occluder = SubResource( 8 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="GateOne" type="CollisionPolygon2D" parent="Structures"]
+visible = false
 polygon = PoolVector2Array( -1647.76, 1151.03, -1649.81, 1192.04, -1647.76, 1247.41, -1658.01, 1296.62, -1666.22, 1382.75, -1662.11, 1454.51, -1645.71, 1509.88, -1621.1, 1567.3, -1594.45, 1624.71, -1643.66, 1669.82, -1696.97, 1741.59, -1740.04, 1825.67, -1785.15, 1926.14, -1824.11, 2061.48, -1861.02, 2215.27, -1899.98, 2326, -1945.09, 2403.92, -1817.96, 2323.95, -1649.81, 2135.3, -1483.72, 2043.02, -1426.3, 1766.2, -1432.45, 1444.26, -1567.79, 1302.77 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="GateTwo" type="CollisionPolygon2D" parent="Structures"]
+visible = false
 polygon = PoolVector2Array( 1267.23, -208.275, 1333.87, -201.928, 1419.55, -193.995, 1448.11, -187.648, 1468.74, -167.021, 1479.85, -141.634, 1509.99, -111.487, 1543.31, -89.2738, 1571.87, -76.5803, 1621.06, -48.0201, 1678.18, -35.3267, 1732.13, -30.5666, 1795.6, -22.6332, 1805.12, 48.7674, 1819.4, 115.408, 1833.68, 153.488, 1860.65, 196.329, 1916.18, 266.143, 1955.85, 326.436, 2017.73, 416.877, 2062.16, 485.105, 2110.6, 597.315, 2140.66, 664.123, 2160.71, 729.26, 2205.8, 413.594, 2019.94, 13.4408, 1950.13, -143.641, 1689.91, -315.002, 1405.9, -375.296 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="GateThree" type="CollisionPolygon2D" parent="Structures"]
+visible = false
 polygon = PoolVector2Array( -218.829, -1103.12, -240.799, -1123.8, -249.846, -1171.62, -265.354, -1262.09, -274.401, -1311.19, -296.371, -1365.47, -323.51, -1406.83, -342.896, -1427.51, -359.696, -1441.72, -384.251, -1448.19, -384.251, -1481.79, -368.743, -1550.28, -346.773, -1632.99, -293.786, -1720.87, -256.308, -1771.28, -216.244, -1826.85, -185.228, -1875.96, -292.494, -1806.17, -465.67, -1702.78, -591.029, -1458.52, -477.301, -1303.44, -351.942, -1193.59 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="GateFour" type="CollisionPolygon2D" parent="Structures"]
+visible = false
 polygon = PoolVector2Array( -4263.54, -1789.42, -4265.59, -1742.26, -4277.89, -1680.74, -4302.5, -1652.04, -4327.1, -1625.38, -4333.26, -1602.82, -4318.9, -1563.86, -4312.75, -1531.05, -4316.85, -1436.73, -4325.05, -1373.16, -4331.21, -1319.85, -4349.66, -1256.28, -4364.01, -1200.91, -4382.47, -1174.26, -4366.06, -1112.74, -4335.31, -1026.62, -4312.75, -958.948, -4306.6, -881.027, -4302.5, -821.561, -4302.5, -774.398, -4271.74, -680.072, -4243.03, -602.151, -4236.88, -579.595, -4329.15, -686.224, -4437.83, -858.471, -4466.54, -993.807, -4507.55, -1192.71, -4485, -1463.38, -4437.83, -1584.37, -4357.86, -1691 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource( 1 )
@@ -152,17 +194,87 @@ margin_top = -4930.55
 margin_right = 8782.48
 margin_bottom = 6261.45
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
+
+[node name="FirstZone" type="Node2D" parent="."]
+
+[node name="GoodHole" parent="FirstZone" instance=ExtResource( 29 )]
+position = Vector2( -2348.51, 1516.58 )
+
+[node name="CBlock" parent="FirstZone" instance=ExtResource( 28 )]
+position = Vector2( -3542.7, 1507.03 )
+
+[node name="SecondZone" type="Node2D" parent="."]
+
+[node name="GoodHole2" parent="SecondZone" instance=ExtResource( 29 )]
+position = Vector2( 995.225, 503.91 )
+fill = 2
+
+[node name="WrongHole" parent="SecondZone" instance=ExtResource( 27 )]
+position = Vector2( 859.375, 1257.56 )
+
+[node name="CBlock2" parent="SecondZone" instance=ExtResource( 28 )]
+position = Vector2( 39.8726, 981.586 )
+
+[node name="CBlock3" parent="SecondZone" instance=ExtResource( 28 )]
+position = Vector2( -428.25, 1497.48 )
+
+[node name="ThirdZone" type="Node2D" parent="."]
+
+[node name="GoodHole3" parent="ThirdZone" instance=ExtResource( 29 )]
+position = Vector2( 2753.07, -1320.81 )
+
+[node name="WrongHole2" parent="ThirdZone" instance=ExtResource( 27 )]
+position = Vector2( 2275.4, -1330.37 )
+
+[node name="CBlock4" parent="ThirdZone" instance=ExtResource( 28 )]
+position = Vector2( 1358.26, -2075.54 )
+
+[node name="CBlock5" parent="ThirdZone" instance=ExtResource( 28 )]
+position = Vector2( 928.35, -1244.38 )
+
+[node name="LastZone" type="Node2D" parent="."]
+
+[node name="GoodHole4" parent="LastZone" instance=ExtResource( 29 )]
+position = Vector2( -2033.24, -1750.72 )
+waitcolor = 0
+
+[node name="GoodHole5" parent="LastZone" instance=ExtResource( 29 )]
+position = Vector2( -3045.91, -623.405 )
+
+[node name="WrongHole3" parent="LastZone" instance=ExtResource( 27 )]
+position = Vector2( -2071.46, -1120.19 )
+
+[node name="CBlock7" parent="LastZone" instance=ExtResource( 28 )]
+position = Vector2( -3017.25, -1158.4 )
+color = 0
+
+[node name="CBlock8" parent="LastZone" instance=ExtResource( 28 )]
+position = Vector2( -3007.7, -1760.27 )
+
+[node name="CBlock6" parent="LastZone" instance=ExtResource( 28 )]
+position = Vector2( -2109.67, -642.512 )
+color = 0
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( -3925.06, 1728.09 )
 
 [node name="EndPoint" type="Area2D" parent="."]
+visible = false
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EndPoint"]
 position = Vector2( -4625.44, -1191.48 )
 shape = SubResource( 9 )
+[connection signal="full" from="FirstZone/GoodHole" to="." method="_firstHole_full"]
+[connection signal="full" from="SecondZone/GoodHole2" to="." method="_secondHole_full"]
+[connection signal="full" from="ThirdZone/GoodHole3" to="." method="_thirdHole_full"]
+[connection signal="full" from="LastZone/GoodHole4" to="." method="_lastHoleOne_full"]
+[connection signal="full" from="LastZone/GoodHole5" to="." method="_lastHoleTwo_full"]
 [connection signal="enterSlowMode" from="Player" to="." method="_on_Player_enterSlowMode"]
 [connection signal="exitSlowMode" from="Player" to="." method="_on_Player_exitSlowMode"]
 [connection signal="body_entered" from="EndPoint" to="." method="_on_EndPoint_body_entered"]
