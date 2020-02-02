@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://assets/sprites/zones/hub/open0013.png" type="Texture" id=1]
 [ext_resource path="res://assets/sprites/zones/hub/open0019.png" type="Texture" id=2]
@@ -23,6 +23,7 @@
 [ext_resource path="res://assets/sprites/zones/hub/open0015.png" type="Texture" id=21]
 [ext_resource path="res://assets/sprites/zones/hub/open0018.png" type="Texture" id=22]
 [ext_resource path="res://assets/sprites/zones/hub/open0020.png" type="Texture" id=23]
+[ext_resource path="res://scripts/Scenes/Hub.gd" type="Script" id=24]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -57,7 +58,25 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="Shader" id=2]
+code = "shader_type canvas_item;
+
+uniform float u_colorFactor;
+
+void fragment(){
+	vec4 sample = texture(SCREEN_TEXTURE, SCREEN_UV);
+	
+	float grey = 0.21 * sample.r + 0.71 * sample.g + 0.07 * sample.b;
+	
+	COLOR = vec4(sample.r * u_colorFactor + grey * (1.0 - u_colorFactor), sample.g * u_colorFactor + grey * (1.0 - u_colorFactor), sample.b * u_colorFactor + grey * (1.0 - u_colorFactor), 1.0);
+}"
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 2 )
+shader_param/u_colorFactor = 1.0
+
 [node name="Node2D" type="Node2D"]
+script = ExtResource( 24 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0.337255, 0.337255, 0.337255, 1 )
@@ -89,14 +108,22 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource( 3 )
+margin_left = -8267.0
+margin_top = -5280.0
+margin_right = 8612.0
+margin_bottom = 5912.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Player" parent="." instance=ExtResource( 7 )]
 position = Vector2( -11.5103, 224.562 )
-cameraDefault = Vector2( 2, 2 )
 cameraZoom = Vector2( 1.5, 1.5 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true
-zoom = Vector2( 2, 2 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -113,22 +140,7 @@ __meta__ = {
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/Occipital"]
 polygon = PoolVector2Array( -521.519, -336.327, -326.306, -459.962, -156.198, -495.774, -59.6113, -446.8, -69.134, -291.717, -101.783, -214.175, -206.532, -180.166, -371.855, -219.199 )
-
-[node name="Frontal" type="Area2D" parent="Node2D"]
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/Frontal"]
-polygon = PoolVector2Array( 861.838, -39.5686, 913.655, -169.112, 1046.9, -343.071, 1117.22, -378.232, 1182, -368.979, 1239.36, -287.552, 1287.48, -215.378, 1346.7, -182.066, 1302.29, -139.502, 1293.03, -76.5811, 1246.77, -65.4773, 1182, -111.743, 1148.68, -141.353, 1093.17, -145.054, 1061.71, -106.191, 1041.35, -61.7761, 1024.69, -102.49, 993.232, -106.191, 932.162, -76.5811 )
-
-[node name="Parietal" type="Area2D" parent="Node2D"]
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/Parietal"]
-polygon = PoolVector2Array( 824.156, 748.053, 867.581, 759.745, 959.442, 753.064, 1061.32, 766.425, 1131.47, 749.724, 1181.58, 796.489, 1173.23, 843.254, 1089.72, 911.732, 979.484, 928.434, 885.953, 921.753, 789.083, 933.444 )
+disabled = true
 
 [node name="Temporal" type="Area2D" parent="Node2D"]
 __meta__ = {
@@ -136,7 +148,26 @@ __meta__ = {
 }
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/Temporal"]
+polygon = PoolVector2Array( 861.838, -39.5686, 913.655, -169.112, 1046.9, -343.071, 1117.22, -378.232, 1182, -368.979, 1239.36, -287.552, 1287.48, -215.378, 1346.7, -182.066, 1302.29, -139.502, 1293.03, -76.5811, 1246.77, -65.4773, 1182, -111.743, 1148.68, -141.353, 1093.17, -145.054, 1061.71, -106.191, 1041.35, -61.7761, 1024.69, -102.49, 993.232, -106.191, 932.162, -76.5811 )
+disabled = true
+
+[node name="Frontal" type="Area2D" parent="Node2D"]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/Frontal"]
+polygon = PoolVector2Array( 824.156, 748.053, 867.581, 759.745, 959.442, 753.064, 1061.32, 766.425, 1131.47, 749.724, 1181.58, 796.489, 1173.23, 843.254, 1089.72, 911.732, 979.484, 928.434, 885.953, 921.753, 789.083, 933.444 )
+disabled = true
+
+[node name="Parietal" type="Area2D" parent="Node2D"]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/Parietal"]
 polygon = PoolVector2Array( -325.232, 570.075, -298.509, 615.17, -258.424, 663.605, -260.094, 722.061, -293.498, 738.763, -377.007, 718.721, -450.496, 725.402, -510.622, 673.626, -537.345, 595.127, -545.696, 523.309, -549.037, 463.183, -502.271, 423.098, -453.836, 394.705, -410.411, 419.758, -368.656, 484.895 )
+disabled = true
 
 [node name="Center" type="Area2D" parent="Node2D"]
 __meta__ = {
@@ -146,13 +177,16 @@ __meta__ = {
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/Center"]
 position = Vector2( 0, -14.6816 )
 polygon = PoolVector2Array( 426.933, 30.3199, 514.594, 16.6837, 601.457, 89.9645, 647.059, 147.201, 684.072, 242.654, 668.487, 330.315, 559.398, 435.509, 467.841, 513.43, 349.012, 474.469, 245.766, 384.86, 241.87, 248.498, 257.455, 117.981, 364.596, 57.5922 )
+disabled = true
+[connection signal="enterSlowMode" from="Player" to="." method="_on_Player_enterSlowMode"]
+[connection signal="exitSlowMode" from="Player" to="." method="_on_Player_exitSlowMode"]
 [connection signal="body_entered" from="Node2D/Occipital" to="Player" method="_on_Occipital_body_entered"]
 [connection signal="body_exited" from="Node2D/Occipital" to="Player" method="_on_Occipital_body_exited"]
+[connection signal="body_entered" from="Node2D/Temporal" to="Player" method="_on_Temporal_body_entered"]
+[connection signal="body_exited" from="Node2D/Temporal" to="Player" method="_on_Temporal_body_exited"]
 [connection signal="body_entered" from="Node2D/Frontal" to="Player" method="_on_Frontal_body_entered"]
 [connection signal="body_exited" from="Node2D/Frontal" to="Player" method="_on_Frontal_body_exited"]
 [connection signal="body_entered" from="Node2D/Parietal" to="Player" method="_on_Parietal_body_entered"]
 [connection signal="body_exited" from="Node2D/Parietal" to="Player" method="_on_Parietal_body_exited"]
-[connection signal="body_entered" from="Node2D/Temporal" to="Player" method="_on_Temporal_body_entered"]
-[connection signal="body_exited" from="Node2D/Temporal" to="Player" method="_on_Temporal_body_exited"]
 [connection signal="body_entered" from="Node2D/Center" to="Player" method="_on_Center_body_entered"]
 [connection signal="body_exited" from="Node2D/Center" to="Player" method="_on_Center_body_exited"]

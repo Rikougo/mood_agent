@@ -2,6 +2,8 @@ extends KinematicBody2D
 
 const Colors = preload("res://scripts/Global/Colors.gd")
 
+export var COLOR_SCALE = 1.25
+
 export (Vector2) var cameraDefault
 export (Vector2) var cameraZoom
 # export (NodePath) var canvasModPath
@@ -34,6 +36,8 @@ var state = State.NORMAL
 var color = Colors.DEFAULT
 
 signal change_it
+signal enterSlowMode
+signal exitSlowMode
 
 var transitionReversed = false
 
@@ -43,8 +47,6 @@ func _ready():
 	$Color_Menu/C_left.modulate = Colors.POOL[Colors.PURPLE]
 	$Color_Menu/C_right.modulate = Colors.POOL[Colors.GREEN]
 	
-	
-
 func _physics_process(delta):
 	
 	# --- PLAYER MOVEMENT --- #
@@ -67,7 +69,7 @@ func _physics_process(delta):
 			transitionReversed = true
 		motion = motion.linear_interpolate(Vector2.ZERO, 0.01)
 	
-	$Particles.get_process_material().set_gravity(Vector3(motion.x * -1, motion.y * -1, 0)) 
+	$Particles.get_process_material().set_gravity(Vector3(motion.x * -1, motion.y * -1, 0).normalized()) 
 	move_and_slide(motion)
 	
 	# ---- END PLAYER MOVEMENT ---- #
@@ -99,10 +101,12 @@ func _input(event):
 	# --- SLOW MO SWITCH --- #
 		
 	if Input.is_action_pressed("slow_mode"):
+		emit_signal("enterSlowMode")
 		state = State.SLOW_MO
 		Engine.time_scale = 0.2
 		
 	if Input.is_action_just_released("slow_mode"):
+		emit_signal("exitSlowMode")
 		Engine.time_scale = 1
 		if state == State.SLOW_MO:
 			state = State.NORMAL
@@ -150,6 +154,14 @@ func _process(delta):
 		$Top_pop_up/Label.set_text(QUOTES[state-1])
 		$Top_pop_up/Sprite.set_visible(state == State.INCAPACITATE)
 		
+func _on_Parietal_body_entered(body):
+	if state == State.NORMAL && body == self:
+		state = State.PARIETAL
+
+func _on_Parietal_body_exited(body):
+	if state == State.PARIETAL and body == self:
+		state = State.NORMAL
+
 func _on_Temporal_body_entered(body):
 	if state == State.NORMAL && body == self:
 		state = State.TEMPORAL
@@ -164,14 +176,6 @@ func _on_Frontal_body_entered(body):
 
 func _on_Frontal_body_exited(body):
 	if state == State.FRONTAL and body == self:
-		state = State.NORMAL
-
-func _on_Parietal_body_entered(body):
-	if state == State.NORMAL && body == self:
-		state = State.PARIETAL
-
-func _on_Parietal_body_exited(body):
-	if state == State.PARIETAL and body == self:
 		state = State.NORMAL
 
 func _on_Occipital_body_entered(body):
@@ -222,10 +226,10 @@ func updateColorScale():
 	$Color_Menu/C_down.scale  = Vector2(1, 1)
 	
 	if color == Colors.PURPLE:
-		$Color_Menu/C_left.scale  *= 2
+		$Color_Menu/C_left.scale  *= COLOR_SCALE
 	elif color == Colors.GREEN:
-		$Color_Menu/C_right.scale *= 2
+		$Color_Menu/C_right.scale *= COLOR_SCALE
 	elif color == Colors.BLUE:
-		$Color_Menu/C_up.scale    *= 2
+		$Color_Menu/C_up.scale    *= COLOR_SCALE
 	elif color == Colors.PINK:
-		$Color_Menu/C_down.scale  *= 2
+		$Color_Menu/C_down.scale  *= COLOR_SCALE

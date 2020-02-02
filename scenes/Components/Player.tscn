@@ -101,6 +101,8 @@ animations = [ {
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 240.843, 228.167 )
 script = ExtResource( 1 )
+cameraDefault = Vector2( 2.5, 2.5 )
+cameraZoom = Vector2( 2, 2 )
 
 [node name="Particles" type="Particles2D" parent="."]
 amount = 50
@@ -127,7 +129,7 @@ __meta__ = {
 position = Vector2( 0, -12.3033 )
 frames = SubResource( 3 )
 animation = "base"
-frame = 6
+frame = 4
 playing = true
 __meta__ = {
 "_edit_lock_": true
@@ -136,8 +138,8 @@ __meta__ = {
 [node name="Visage" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -12.3033 )
 frames = SubResource( 4 )
-animation = "idle"
-frame = 5
+animation = "swimming"
+frame = 12
 playing = true
 __meta__ = {
 "_edit_lock_": true

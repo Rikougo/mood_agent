@@ -22,7 +22,7 @@ const HUB_ANIMATIONS = [
 
 var currentScene
 
-var levelCompleted = 0
+var levelCompleted = 3
 
 func _ready():
 	changeScene(mainMenu)
@@ -38,12 +38,14 @@ func startGame():
 	changeScene(hub)
 	
 	currentScene.get_node("Structures/AnimatedSprite").play(HUB_ANIMATIONS[levelCompleted])
+	currentScene.openGates(levelCompleted)
 
 func onOccipitalCompleted():
 	levelCompleted = max(levelCompleted, 1)
 	changeScene(hub)
 	
 	currentScene.get_node("Structures/AnimatedSprite").play(HUB_ANIMATIONS[levelCompleted])
+	currentScene.openGates(levelCompleted)
 	
 func onTemporalCompleted():
 	levelCompleted = max(levelCompleted, 2)

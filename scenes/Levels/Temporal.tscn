@@ -4,10 +4,7 @@
 
 [node name="Node2D" type="Node2D"]
 
-[node name="KinematicBody2D" parent="." instance=ExtResource( 5 )]
-position = Vector2( 187.06, 434.247 )
+[node name="Player" parent="." instance=ExtResource( 5 )]
 
-[node name="Camera2D" type="Camera2D" parent="KinematicBody2D"]
-position = Vector2( 4, 0 )
+[node name="Camera2D" type="Camera2D" parent="Player"]
 current = true
-zoom = Vector2( 3, 3 )
