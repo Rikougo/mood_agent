@@ -8,7 +8,7 @@ var length
 
 func _ready():
 	set_bounce(0.8)
-	collision_layer = color
+	collision_layer = pow(2, color)
 	$Label.text = WORDS[current]
 	if color: modulate = Colors.POOL[color]
 	length = $Label.text.length()

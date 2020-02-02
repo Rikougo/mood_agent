@@ -34,3 +34,8 @@ func _wordTwo_completed():
 func _wordThree_completed():
 	$Structures/AnimatedSprite.play("lastGate")
 	$Structures/GateThree.queue_free()
+
+
+func _on_Area2D_body_entered(body):
+	if body == $Player:
+		game.on_level_completed(Levels.TEMPORAL)

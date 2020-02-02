@@ -7,6 +7,8 @@
 extents = Vector2( 215.707, 88.9178 )
 
 [node name="Receptacle" type="Area2D"]
+collision_layer = 1055
+collision_mask = 1055
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true,

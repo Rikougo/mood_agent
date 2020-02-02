@@ -10,7 +10,7 @@ func _ready():
 	modulate = Colors.POOL[color]
 
 func _process(delta):
-	collision_layer = color
+	collision_layer = pow(2, color)
 
 func _physics_process(delta):
 	velocity = get_linear_velocity()

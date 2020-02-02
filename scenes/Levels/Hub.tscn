@@ -127,6 +127,8 @@ __meta__ = {
 }
 
 [node name="Occipital" type="Area2D" parent="Node2D"]
+collision_layer = 1055
+collision_mask = 1055
 __meta__ = {
 "_edit_lock_": true
 }
@@ -136,6 +138,8 @@ polygon = PoolVector2Array( -521.519, -336.327, -326.306, -459.962, -156.198, -4
 disabled = true
 
 [node name="Temporal" type="Area2D" parent="Node2D"]
+collision_layer = 1055
+collision_mask = 1055
 __meta__ = {
 "_edit_lock_": true
 }
@@ -145,6 +149,8 @@ polygon = PoolVector2Array( 861.838, -39.5686, 913.655, -169.112, 1046.9, -343.0
 disabled = true
 
 [node name="Frontal" type="Area2D" parent="Node2D"]
+collision_layer = 1055
+collision_mask = 1055
 __meta__ = {
 "_edit_lock_": true
 }
@@ -154,6 +160,7 @@ polygon = PoolVector2Array( 824.156, 748.053, 867.581, 759.745, 959.442, 753.064
 disabled = true
 
 [node name="Parietal" type="Area2D" parent="Node2D"]
+collision_layer = 1055
 __meta__ = {
 "_edit_lock_": true
 }
@@ -163,6 +170,7 @@ polygon = PoolVector2Array( -325.232, 570.075, -298.509, 615.17, -258.424, 663.6
 disabled = true
 
 [node name="Center" type="Area2D" parent="Node2D"]
+collision_layer = 1055
 __meta__ = {
 "_edit_lock_": true
 }

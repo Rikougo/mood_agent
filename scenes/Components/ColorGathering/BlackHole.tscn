@@ -8,6 +8,8 @@
 extents = Vector2( 94.22, 92.34 )
 
 [node name="WrongHole" type="Area2D"]
+collision_layer = 1055
+collision_mask = 1055
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true

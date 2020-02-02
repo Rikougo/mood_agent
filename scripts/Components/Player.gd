@@ -117,7 +117,7 @@ func _input(event):
 
 func _process(delta):
 	var modulateColor = Colors.POOL[color]
-	collision_mask = color
+	collision_mask = pow(2, color)
 
 	if state == State.SLOW_MO:
 		if canvasMod:

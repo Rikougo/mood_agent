@@ -23,6 +23,9 @@ var levelCompleted = 0
 func _input(event):
 	if event.is_action_pressed("ui_select"):
 		goto_scene(current_scene.PATH)
+	if event.is_action_pressed("reset_hard"):
+		levelCompleted = 0
+		goto_scene(HUB)
 
 func _ready():
 	var root = get_tree().get_root()

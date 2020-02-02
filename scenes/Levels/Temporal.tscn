@@ -169,8 +169,16 @@ color = 3
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
 position = Vector2( -122.761, 2163.48 )
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 1055
+collision_mask = 1055
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PoolVector2Array( -4634.02, -948.845, -4479.9, -1274.2, -4404.55, -1674.9, -4521, -1846.14, -4668.26, -1866.69, -4784.71, -1829.02, -4784.71, -1017.34 )
 [connection signal="full" from="WordOne/Receptacle" to="." method="_wordOne_completed"]
 [connection signal="full" from="WordTwo/Receptacle" to="." method="_wordTwo_completed"]
 [connection signal="full" from="WordThree/Receptacle" to="." method="_wordThree_completed"]
 [connection signal="enterSlowMode" from="Player" to="." method="_on_Player_enterSlowMode"]
 [connection signal="exitSlowMode" from="Player" to="." method="_on_Player_exitSlowMode"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
